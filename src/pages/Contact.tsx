@@ -33,7 +33,7 @@ export default function Contact() {
     e.preventDefault();
     // Here you would normally send the data to your backend
     toast({
-      title: "הודעה נשלחה בהצלחה!",
+      title: t('contact.success'),
       description: "נחזור אליכם בתוך 24 שעות",
     });
     
@@ -65,22 +65,22 @@ export default function Contact() {
         <div className="container mx-auto px-4">
           {/* Header */}
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold mb-4 text-gradient-primary">צור קשר</h1>
+            <h1 className="text-4xl font-bold mb-4 text-gradient-primary">{t('contact.title')}</h1>
             <p className="text-xl text-muted-foreground mb-8">
-              בואו נדבר על הנכס הבא שלכם - ייעוץ ראשוני ללא התחייבות
+              {t('contact.subtitle')}
             </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Badge className="bg-accent text-accent-foreground text-sm px-4 py-2">
               <Shield className="h-4 w-4 mr-2" />
-              תעודת אחריות אישית
+              {t('services.badges.guarantee')}
             </Badge>
             <Badge className="bg-primary text-primary-foreground text-sm px-4 py-2">
               <Users className="h-4 w-4 mr-2" />
-              ליווי אישי 1:1
+              {t('services.badges.personal')}
             </Badge>
             <Badge className="bg-secondary text-secondary-foreground text-sm px-4 py-2">
               <Clock className="h-4 w-4 mr-2" />
-              מענה תוך 24 שעות
+              {t('contact.info.response')}
             </Badge>
           </div>
         </div>
@@ -90,9 +90,9 @@ export default function Contact() {
           <div className="lg:col-span-2">
             <Card className="card-elegant">
               <CardHeader>
-                <CardTitle className="text-2xl">שלחו הודעה</CardTitle>
+                <CardTitle className="text-2xl">{t('contact.form.title')}</CardTitle>
                 <CardDescription>
-                  מלאו את הפרטים ונחזור אליכם עם הצעה מותאמת אישית
+                  {t('contact.form.subtitle')}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -100,46 +100,46 @@ export default function Contact() {
                   {/* Personal Details */}
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="name">שם מלא *</Label>
+                      <Label htmlFor="name">{t('contact.name')} *</Label>
                       <Input
                         id="name"
                         required
                         value={formData.name}
                         onChange={(e) => handleInputChange('name', e.target.value)}
-                        placeholder="שם פרטי ומשפחה"
+                        placeholder={t('contact.placeholders.name')}
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="email">אימייל *</Label>
+                      <Label htmlFor="email">{t('contact.email')} *</Label>
                       <Input
                         id="email"
                         type="email"
                         required
                         value={formData.email}
                         onChange={(e) => handleInputChange('email', e.target.value)}
-                        placeholder="example@email.com"
+                        placeholder={t('contact.placeholders.email')}
                       />
                     </div>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="phone">טלפון *</Label>
+                      <Label htmlFor="phone">{t('contact.phone')} *</Label>
                       <Input
                         id="phone"
                         required
                         value={formData.phone}
                         onChange={(e) => handleInputChange('phone', e.target.value)}
-                        placeholder="050-123-4567"
+                        placeholder={t('contact.placeholders.phone')}
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="company">חברה</Label>
+                      <Label htmlFor="company">{t('contact.company')}</Label>
                       <Input
                         id="company"
                         value={formData.company}
                         onChange={(e) => handleInputChange('company', e.target.value)}
-                        placeholder="שם החברה"
+                        placeholder={t('contact.placeholders.company')}
                       />
                     </div>
                   </div>
@@ -147,29 +147,29 @@ export default function Contact() {
                   {/* Property Requirements */}
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="propertyType">סוג נכס</Label>
+                      <Label htmlFor="propertyType">{t('contact.property_type')}</Label>
                       <Select value={formData.propertyType} onValueChange={(value) => handleInputChange('propertyType', value)}>
                         <SelectTrigger>
-                          <SelectValue placeholder="בחר סוג נכס" />
+                          <SelectValue placeholder={t('contact.property_type')} />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="office">משרדים</SelectItem>
-                          <SelectItem value="commercial">מסחרי</SelectItem>
-                          <SelectItem value="building">בניין שלם</SelectItem>
-                          <SelectItem value="other">אחר</SelectItem>
+                          <SelectItem value="office">{t('contact.property_types.office')}</SelectItem>
+                          <SelectItem value="commercial">{t('contact.property_types.commercial')}</SelectItem>
+                          <SelectItem value="building">{t('contact.property_types.building')}</SelectItem>
+                          <SelectItem value="other">{t('contact.other')}</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="dealType">סוג עסקה</Label>
+                      <Label htmlFor="dealType">{t('contact.deal_type')}</Label>
                       <Select value={formData.dealType} onValueChange={(value) => handleInputChange('dealType', value)}>
                         <SelectTrigger>
-                          <SelectValue placeholder="בחר סוג עסקה" />
+                          <SelectValue placeholder={t('contact.deal_type')} />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="rent">השכרה</SelectItem>
-                          <SelectItem value="sale">מכירה</SelectItem>
-                          <SelectItem value="both">שניהם</SelectItem>
+                          <SelectItem value="rent">{t('contact.deal_types.rent')}</SelectItem>
+                          <SelectItem value="sale">{t('contact.deal_types.sale')}</SelectItem>
+                          <SelectItem value="both">{t('contact.both')}</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -177,63 +177,63 @@ export default function Contact() {
 
                   <div className="grid md:grid-cols-3 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="budget">תקציב (₪)</Label>
+                      <Label htmlFor="budget">{t('contact.budget')}</Label>
                       <Input
                         id="budget"
                         value={formData.budget}
                         onChange={(e) => handleInputChange('budget', e.target.value)}
-                        placeholder="למשל: 50,000"
+                        placeholder={t('contact.placeholders.budget')}
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="area">שטח מבוקש (מ"ר)</Label>
+                      <Label htmlFor="area">{t('contact.area')}</Label>
                       <Input
                         id="area"
                         value={formData.area}
                         onChange={(e) => handleInputChange('area', e.target.value)}
-                        placeholder="למשל: 500"
+                        placeholder={t('contact.placeholders.area')}
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="urgency">דחיפות</Label>
+                      <Label htmlFor="urgency">{t('contact.urgency')}</Label>
                       <Select value={formData.urgency} onValueChange={(value) => handleInputChange('urgency', value)}>
                         <SelectTrigger>
-                          <SelectValue placeholder="רמת דחיפות" />
+                          <SelectValue placeholder={t('contact.urgency')} />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="low">לא דחוף</SelectItem>
-                          <SelectItem value="medium">בינוני</SelectItem>
-                          <SelectItem value="high">דחוף</SelectItem>
-                          <SelectItem value="urgent">דחוף מאוד</SelectItem>
+                          <SelectItem value="low">{t('contact.urgency.low')}</SelectItem>
+                          <SelectItem value="medium">{t('contact.urgency.medium')}</SelectItem>
+                          <SelectItem value="high">{t('contact.urgency.high')}</SelectItem>
+                          <SelectItem value="urgent">{t('contact.urgency.very_urgent')}</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="location">אזור מבוקש</Label>
+                    <Label htmlFor="location">{t('contact.location')}</Label>
                     <Input
                       id="location"
                       value={formData.location}
                       onChange={(e) => handleInputChange('location', e.target.value)}
-                      placeholder="למשל: תל אביב, רמת גן, הרצליה"
+                      placeholder={t('contact.placeholders.location')}
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="message">הודעה נוספת</Label>
+                    <Label htmlFor="message">{t('contact.message')}</Label>
                     <Textarea
                       id="message"
                       value={formData.message}
                       onChange={(e) => handleInputChange('message', e.target.value)}
-                      placeholder="פרטו את הצרכים הספציפיים שלכם..."
+                      placeholder={t('contact.placeholders.message')}
                       rows={4}
                     />
                   </div>
 
                   <Button type="submit" className="btn-primary w-full h-12">
                     <Send className="h-4 w-4 mr-2" />
-                    שלח הודעה
+                    {t('contact.submit')}
                   </Button>
                 </form>
               </CardContent>
@@ -245,17 +245,17 @@ export default function Contact() {
             {/* Direct Contact */}
             <Card className="card-elegant">
               <CardHeader>
-                <CardTitle className="text-xl">יצירת קשר ישירה</CardTitle>
+                <CardTitle className="text-xl">{t('contact.direct.title')}</CardTitle>
                 <CardDescription>
-                  מחפשים תשובה מהירה? הגיעו אלינו ישירות
+                  {t('contact.direct.subtitle')}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-start gap-3">
                   <Phone className="h-5 w-5 text-primary mt-1" />
                   <div>
-                    <div className="font-medium">שי ספז</div>
-                    <div className="text-sm text-muted-foreground">מנכ"ל ומייסד</div>
+                    <div className="font-medium">{t('contact.shai')}</div>
+                    <div className="text-sm text-muted-foreground">{t('contact.direct.ceo')}</div>
                     <div className="text-sm font-medium">050-123-4567</div>
                   </div>
                 </div>
@@ -263,7 +263,7 @@ export default function Contact() {
                 <div className="flex items-start gap-3">
                   <Mail className="h-5 w-5 text-primary mt-1" />
                   <div>
-                    <div className="font-medium">אימייל</div>
+                    <div className="font-medium">{t('contact.direct.email_label')}</div>
                     <div className="text-sm text-muted-foreground">shai@spzrealestate.com</div>
                   </div>
                 </div>
@@ -271,25 +271,24 @@ export default function Contact() {
                 <div className="flex items-start gap-3">
                   <MapPin className="h-5 w-5 text-primary mt-1" />
                   <div>
-                    <div className="font-medium">משרד ראשי</div>
-                    <div className="text-sm text-muted-foreground">תל אביב, ישראל</div>
+                    <div className="font-medium">{t('contact.direct.office')}</div>
+                    <div className="text-sm text-muted-foreground">{t('contact.info.address')}</div>
                   </div>
                 </div>
                 
                 <div className="flex items-start gap-3">
                   <Clock className="h-5 w-5 text-primary mt-1" />
                   <div>
-                    <div className="font-medium">שעות עבודה</div>
+                    <div className="font-medium">{t('contact.direct.hours')}</div>
                     <div className="text-sm text-muted-foreground">
-                      א'-ה' 8:00-18:00<br />
-                      ו' 8:00-14:00
+                      {t('contact.info.hours')}
                     </div>
                   </div>
                 </div>
 
                 <div className="pt-4">
                   <Button className="btn-accent w-full">
-                    📞 התקשר עכשיו
+                    {t('contact.direct.call_now')}
                   </Button>
                 </div>
               </CardContent>
@@ -298,15 +297,15 @@ export default function Contact() {
             {/* Why Choose Us */}
             <Card className="card-elegant">
               <CardHeader>
-                <CardTitle className="text-xl">למה לבחור בנו?</CardTitle>
+                <CardTitle className="text-xl">{t('contact.why.title')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-start gap-3">
                   <Shield className="h-5 w-5 text-primary mt-1" />
                   <div>
-                    <div className="font-medium">תעודת אחריות אישית</div>
+                    <div className="font-medium">{t('contact.why.warranty')}</div>
                     <div className="text-sm text-muted-foreground">
-                      הגנה מלאה על האינטרסים שלכם
+                      {t('contact.why.warranty_desc')}
                     </div>
                   </div>
                 </div>
@@ -314,9 +313,9 @@ export default function Contact() {
                 <div className="flex items-start gap-3">
                   <Users className="h-5 w-5 text-primary mt-1" />
                   <div>
-                    <div className="font-medium">ליווי אישי 1:1</div>
+                    <div className="font-medium">{t('contact.why.personal')}</div>
                     <div className="text-sm text-muted-foreground">
-                      מתחילת התהליך ועד לסיומו
+                      {t('contact.why.personal_desc')}
                     </div>
                   </div>
                 </div>
@@ -324,9 +323,9 @@ export default function Contact() {
                 <div className="flex items-start gap-3">
                   <Building className="h-5 w-5 text-primary mt-1" />
                   <div>
-                    <div className="font-medium">מאגר נכסים ייחודי</div>
+                    <div className="font-medium">{t('contact.why.database')}</div>
                     <div className="text-sm text-muted-foreground">
-                      גישה לנכסים שלא זמינים במקומות אחרים
+                      {t('contact.why.database_desc')}
                     </div>
                   </div>
                 </div>
@@ -334,30 +333,12 @@ export default function Contact() {
                 <div className="flex items-start gap-3">
                   <Clock className="h-5 w-5 text-primary mt-1" />
                   <div>
-                    <div className="font-medium">מענה מהיר</div>
+                    <div className="font-medium">{t('contact.why.response')}</div>
                     <div className="text-sm text-muted-foreground">
-                      תוך 24 שעות מקבלת הפנייה
+                      {t('contact.why.response_desc')}
                     </div>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
-
-            {/* Emergency Contact */}
-            <Card className="card-elegant bg-gradient-accent text-white">
-              <CardContent className="p-6 text-center">
-                <h3 className="text-lg font-bold mb-2">מצב חירום?</h3>
-                <p className="text-sm opacity-90 mb-4">
-                  עבור עסקאות דחופות אנחנו זמינים 24/7
-                </p>
-                <ContactButton 
-                  variant="secondary" 
-                  size="lg" 
-                  className="w-full"
-                  type="whatsapp"
-                >
-                  📱 שליחת הודעת חירום
-                </ContactButton>
               </CardContent>
             </Card>
           </div>

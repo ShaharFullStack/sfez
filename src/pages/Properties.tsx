@@ -61,6 +61,49 @@ export default function Properties() {
 	const [statusFilter, setStatusFilter] = useState<string>('all');
 	const [locationFilter, setLocationFilter] = useState<string>('all');
 
+	const mockProperties = useMemo(() => [
+		{
+			id: '1',
+			title: t('properties.sample.office1.title'),
+			description: t('properties.sample.office1.description'),
+			type: 'office',
+			status: 'rent',
+			price: 25000,
+			area: 500,
+			location: 'Tel Aviv',
+			address: 'Rothschild Blvd 1, Tel Aviv',
+			features: [t('properties.features.parking'), t('properties.features.ac'), t('properties.features.internet'), t('properties.features.meeting_rooms')],
+			images: ['/placeholder.svg'],
+			contactInfo: {
+				name: 'Shai Spaz',
+				phone: '+972-50-123-4567',
+				email: 'shai@spzrealestate.com'
+			},
+			createdAt: new Date(),
+			updatedAt: new Date()
+		},
+		{
+			id: '2',
+			title: t('properties.sample.commercial1.title'),
+			description: t('properties.sample.commercial1.description'),
+			type: 'commercial',
+			status: 'sale',
+			price: 5500000,
+			area: 800,
+			location: 'Ramat Gan',
+			address: 'Diamond Exchange District, Ramat Gan',
+			features: [t('properties.features.visibility'), t('properties.features.ground_floor'), t('properties.features.flexible'), t('properties.features.storage')],
+			images: ['/placeholder.svg'],
+			contactInfo: {
+				name: 'Shai Spaz',
+				phone: '+972-50-123-4567',
+				email: 'shai@spzrealestate.com'
+			},
+			createdAt: new Date(),
+			updatedAt: new Date()
+		}
+	], [t]);
+
 	const filteredProperties = useMemo(() => {
 		return mockProperties.filter(property => {
 			const matchesSearch = property.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -71,7 +114,7 @@ export default function Properties() {
 
 			return matchesSearch && matchesType && matchesStatus && matchesLocation;
 		});
-	}, [searchTerm, typeFilter, statusFilter, locationFilter]);
+	}, [searchTerm, typeFilter, statusFilter, locationFilter, mockProperties]);
 
 	const getStatusBadgeVariant = (status: string) => {
 		switch (status) {
@@ -96,7 +139,7 @@ export default function Properties() {
 		});
 
 		if (status === 'rent') {
-			return `${formatter.format(price)}/חודש`;
+			return `${formatter.format(price)}${t('properties.currency.month')}`;
 		}
 		return formatter.format(price);
 	};
@@ -109,8 +152,8 @@ export default function Properties() {
 				<div className="container mx-auto px-4">
 					{/* Header */}
 					<div className="text-center mb-12">
-					<h1 className="text-4xl font-bold mb-4 text-gradient-primary">נכסים זמינים</h1>
-					<p className="text-xl text-muted-foreground">מצאו את הנכס המושלם עבורכם</p>
+					<h1 className="text-4xl font-bold mb-4 text-gradient-primary">{t('properties.title')}</h1>
+					<p className="text-xl text-muted-foreground">{t('properties.subtitle')}</p>
 				</div>
 
 				{/* Filters */}
@@ -119,7 +162,7 @@ export default function Properties() {
 						<div className="relative">
 							<Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
 							<Input
-								placeholder="חיפוש נכסים..."
+								placeholder={t('properties.search.placeholder')}
 								value={searchTerm}
 								onChange={(e) => setSearchTerm(e.target.value)}
 								className="pl-10"
@@ -127,42 +170,42 @@ export default function Properties() {
 						</div>
 						<Select value={typeFilter} onValueChange={setTypeFilter}>
 							<SelectTrigger>
-								<SelectValue placeholder="סוג נכס" />
+								<SelectValue placeholder={t('properties.filters.type')} />
 							</SelectTrigger>
 							<SelectContent>
-								<SelectItem value="all">כל הסוגים</SelectItem>
-								<SelectItem value="office">משרדים</SelectItem>
-								<SelectItem value="commercial">מסחרי</SelectItem>
-								<SelectItem value="building">בניין שלם</SelectItem>
+								<SelectItem value="all">{t('properties.filters.all_types')}</SelectItem>
+								<SelectItem value="office">{t('properties.types.office')}</SelectItem>
+								<SelectItem value="commercial">{t('properties.types.commercial')}</SelectItem>
+								<SelectItem value="building">{t('properties.types.building')}</SelectItem>
 							</SelectContent>
 						</Select>
 						<Select value={statusFilter} onValueChange={setStatusFilter}>
 							<SelectTrigger>
-								<SelectValue placeholder="סטטוס" />
+								<SelectValue placeholder={t('properties.filters.status')} />
 							</SelectTrigger>
 							<SelectContent>
-								<SelectItem value="all">כל הסטטוסים</SelectItem>
-								<SelectItem value="rent">להשכרה</SelectItem>
-								<SelectItem value="sale">למכירה</SelectItem>
-								<SelectItem value="rented">מושכר</SelectItem>
-								<SelectItem value="sold">נמכר</SelectItem>
+								<SelectItem value="all">{t('properties.filters.all_statuses')}</SelectItem>
+								<SelectItem value="rent">{t('properties.statuses.rent')}</SelectItem>
+								<SelectItem value="sale">{t('properties.statuses.sale')}</SelectItem>
+								<SelectItem value="rented">{t('properties.statuses.rented')}</SelectItem>
+								<SelectItem value="sold">{t('properties.statuses.sold')}</SelectItem>
 							</SelectContent>
 						</Select>
 						<Select value={locationFilter} onValueChange={setLocationFilter}>
 							<SelectTrigger>
-								<SelectValue placeholder="מיקום" />
+								<SelectValue placeholder={t('properties.filters.location')} />
 							</SelectTrigger>
 							<SelectContent>
-								<SelectItem value="all">כל המיקומים</SelectItem>
-								<SelectItem value="Tel Aviv">תל אביב</SelectItem>
-								<SelectItem value="Ramat Gan">רמת גן</SelectItem>
-								<SelectItem value="Herzliya">הרצליה</SelectItem>
-								<SelectItem value="Petach Tikva">פתח תקוה</SelectItem>
+								<SelectItem value="all">{t('properties.filters.all_locations')}</SelectItem>
+								<SelectItem value="Tel Aviv">{t('properties.locations.tel_aviv')}</SelectItem>
+								<SelectItem value="Ramat Gan">{t('properties.locations.ramat_gan')}</SelectItem>
+								<SelectItem value="Herzliya">{t('properties.locations.herzliya')}</SelectItem>
+								<SelectItem value="Petach Tikva">{t('properties.locations.petach_tikva')}</SelectItem>
 							</SelectContent>
 						</Select>
 					</div>
 					<div className="text-sm text-muted-foreground">
-						נמצאו {filteredProperties.length} נכסים
+						{t('properties.results_count').replace('{count}', filteredProperties.length.toString())}
 					</div>
 				</div>
 
@@ -180,9 +223,9 @@ export default function Properties() {
 									className="absolute top-4 right-4"
 									variant={getStatusBadgeVariant(property.status)}
 								>
-									{property.status === 'rent' ? 'להשכרה' :
-										property.status === 'sale' ? 'למכירה' :
-											property.status === 'rented' ? 'מושכר' : 'נמכר'}
+									{property.status === 'rent' ? t('properties.statuses.rent') :
+										property.status === 'sale' ? t('properties.statuses.sale') :
+											property.status === 'rented' ? t('properties.statuses.rented') : t('properties.statuses.sold')}
 								</Badge>
 							</div>
 
@@ -199,7 +242,7 @@ export default function Properties() {
 
 								<div className="flex items-center gap-2 text-muted-foreground">
 									<Square className="h-4 w-4" />
-									<span className="text-sm">{property.area} מ"ר</span>
+									<span className="text-sm">{property.area} {t('properties.area_unit')}</span>
 								</div>
 
 								<div className="text-2xl font-bold text-gradient-primary">
@@ -214,7 +257,7 @@ export default function Properties() {
 									))}
 									{property.features.length > 3 && (
 										<Badge variant="outline" className="text-xs">
-											+{property.features.length - 3} נוספים
+											{t('properties.features.more').replace('{count}', (property.features.length - 3).toString())}
 										</Badge>
 									)}
 								</div>
@@ -222,11 +265,11 @@ export default function Properties() {
 								<div className="flex gap-2 pt-4">
 									<Button className="btn-primary flex-1">
 										<Phone className="h-4 w-4 ml-2" />
-										התקשר
+										{t('properties.actions.call')}
 									</Button>
 									<Button variant="outline" className="btn-glass flex-1">
 										<Mail className="h-4 w-4 ml-2" />
-										מייל
+										{t('properties.actions.email')}
 									</Button>
 								</div>
 							</CardContent>
@@ -236,7 +279,7 @@ export default function Properties() {
 
 				{filteredProperties.length === 0 && (
 					<div className="text-center py-12">
-						<p className="text-xl text-muted-foreground mb-4">לא נמצאו נכסים התואמים לחיפוש</p>
+						<p className="text-xl text-muted-foreground mb-4">{t('properties.no_results')}</p>
 						<Button
 							onClick={() => {
 								setSearchTerm('');
@@ -246,7 +289,7 @@ export default function Properties() {
 							}}
 							className="btn-accent"
 						>
-							נקה סינון
+							{t('properties.clear_filters')}
 						</Button>
 					</div>
 				)}

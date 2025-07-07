@@ -43,13 +43,14 @@ export default function Calculator() {
   const pricePerSqm = parseFloat(price) && parseFloat(area) ? parseFloat(price) / parseFloat(area) : 0;
 
   const propertyTypes = [
-    { value: 'office', label: 'משרדים', icon: Building },
-    { value: 'commercial', label: 'מסחרי', icon: Store },
-    { value: 'building', label: 'בניין שלם', icon: Home }
+    { value: 'office', label: t('calculator.office'), icon: Building },
+    { value: 'commercial', label: t('calculator.commercial'), icon: Store },
+    { value: 'building', label: t('calculator.building'), icon: Home }
   ];
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('he-IL', {
+    const locale = t('calculator.currency.locale');
+    return new Intl.NumberFormat(locale, {
       style: 'currency',
       currency: 'ILS',
       minimumFractionDigits: 0,
@@ -68,9 +69,9 @@ export default function Calculator() {
           <div className="w-16 h-16 bg-gradient-primary rounded-lg mx-auto mb-6 flex items-center justify-center">
             <CalculatorIcon className="h-8 w-8 text-white" />
           </div>
-          <h1 className="text-4xl font-bold mb-4 text-gradient-primary">מחשבון עמלות</h1>
+          <h1 className="text-4xl font-bold mb-4 text-gradient-primary">{t('calculator.title')}</h1>
           <p className="text-xl text-muted-foreground">
-            חשבו את עלות השירות בקלות ובשקיפות מלאה
+            {t('calculator.subtitle')}
           </p>
         </div>
 
@@ -78,36 +79,36 @@ export default function Calculator() {
           {/* Input Form */}
           <Card className="card-elegant">
             <CardHeader>
-              <CardTitle className="text-2xl">פרטי העסקה</CardTitle>
+              <CardTitle className="text-2xl">{t('calculator.deal_details')}</CardTitle>
               <CardDescription>
-                מלאו את הפרטים לחישוב מדויק של העמלה
+                {t('calculator.deal_details_desc')}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               {/* Deal Type */}
               <div className="space-y-3">
-                <Label className="text-base font-medium">סוג עסקה</Label>
+                <Label className="text-base font-medium">{t('calculator.transaction_type')}</Label>
                 <div className="grid grid-cols-2 gap-3">
                   <Button
                     variant={dealType === 'rent' ? 'default' : 'outline'}
                     onClick={() => setDealType('rent')}
                     className="h-12"
                   >
-                    השכרה
+                    {t('calculator.rent')}
                   </Button>
                   <Button
                     variant={dealType === 'sale' ? 'default' : 'outline'}
                     onClick={() => setDealType('sale')}
                     className="h-12"
                   >
-                    מכירה
+                    {t('calculator.sale')}
                   </Button>
                 </div>
               </div>
 
               {/* Property Type */}
               <div className="space-y-3">
-                <Label className="text-base font-medium">סוג נכס</Label>
+                <Label className="text-base font-medium">{t('calculator.property_type')}</Label>
                 <Select value={propertyType} onValueChange={setPropertyType}>
                   <SelectTrigger className="h-12">
                     <SelectValue />
@@ -128,7 +129,7 @@ export default function Calculator() {
               {/* Price */}
               <div className="space-y-3">
                 <Label className="text-base font-medium">
-                  {dealType === 'rent' ? 'שכירות חודשית (₪)' : 'מחיר מכירה (₪)'}
+                  {dealType === 'rent' ? t('calculator.rental_price') : t('calculator.property_value')}
                 </Label>
                 <Input
                   type="number"
@@ -141,7 +142,7 @@ export default function Calculator() {
 
               {/* Area */}
               <div className="space-y-3">
-                <Label className="text-base font-medium">שטח (מ"ר)</Label>
+                <Label className="text-base font-medium">{t('calculator.area')}</Label>
                 <Input
                   type="number"
                   placeholder="500"
@@ -156,28 +157,28 @@ export default function Calculator() {
           {/* Results */}
           <Card className="card-elegant">
             <CardHeader>
-              <CardTitle className="text-2xl">תוצאות החישוב</CardTitle>
+              <CardTitle className="text-2xl">{t('calculator.results.title')}</CardTitle>
               <CardDescription>
-                חישוב מדויק של העמלה וכל העלויות
+                {t('calculator.results.subtitle')}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               {/* Commission Rate */}
               <div className="card-elegant p-4">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-muted-foreground">שיעור עמלה</span>
+                  <span className="text-sm text-muted-foreground">{t('calculator.commission_rate')}</span>
                   <Badge variant="outline">
                     {dealType === 'rent' 
-                      ? 'חודש שכירות + מע"מ'
-                      : `${getCommissionRate(propertyType, dealType)}% + מע"מ`
+                      ? t('calculator.month_rent_vat')
+                      : `${getCommissionRate(propertyType, dealType)}% + ${t('calculator.results.vat')}`
                     }
                   </Badge>
                 </div>
               </div>
 
               {/* Total Commission */}
-              <div className="card-elegant p-6 text-center bg-gradient-primary text-white">
-                <div className="text-sm opacity-90 mb-1">סך עמלה כולל מע"מ</div>
+              <div className="card-elegant p-6 text-center bg-gradient-primary text-secondary">
+                <div className="text-sm opacity-90 mb-1">{t('calculator.total_with_vat')}</div>
                 <div className="text-3xl font-bold">
                   {commission > 0 ? formatCurrency(commission) : '---'}
                 </div>
@@ -188,7 +189,7 @@ export default function Calculator() {
                 <div className="card-elegant p-4">
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-muted-foreground">
-                      {dealType === 'rent' ? 'מחיר למ"ר (חודשי)' : 'מחיר למ"ר'}
+                      {dealType === 'rent' ? t('calculator.price_per_sqm_monthly') : t('calculator.price_per_sqm')}
                     </span>
                     <span className="font-medium">
                       {formatCurrency(pricePerSqm)}
@@ -202,9 +203,9 @@ export default function Calculator() {
                 <div className="flex items-start gap-3 p-4 bg-secondary rounded-lg">
                   <Info className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                   <div className="text-sm">
-                    <div className="font-medium mb-1">תעודת אחריות אישית</div>
+                    <div className="font-medium mb-1">{t('calculator.warranty.title')}</div>
                     <div className="text-muted-foreground">
-                      כל עסקה מגובה בתעודת אחריות אישית ללא עלות נוספת
+                      {t('calculator.warranty.desc')}
                     </div>
                   </div>
                 </div>
@@ -212,9 +213,9 @@ export default function Calculator() {
                 <div className="flex items-start gap-3 p-4 bg-secondary rounded-lg">
                   <Info className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                   <div className="text-sm">
-                    <div className="font-medium mb-1">ליווי מקצועי</div>
+                    <div className="font-medium mb-1">{t('calculator.guidance.title')}</div>
                     <div className="text-muted-foreground">
-                      ליווי אישי 1:1 מתחילת התהליך ועד לחתימה על החוזה
+                      {t('calculator.guidance.desc')}
                     </div>
                   </div>
                 </div>
@@ -223,10 +224,10 @@ export default function Calculator() {
               {/* CTA */}
               <div className="space-y-3">
                 <Button className="btn-primary w-full h-12">
-                  📞 קבל הצעה מותאמת אישית
+                  {t('calculator.cta.quote')}
                 </Button>
                 <Button variant="outline" className="btn-glass w-full h-12">
-                  📧 שלח תוצאות במייל
+                  {t('calculator.cta.email')}
                 </Button>
               </div>
             </CardContent>
@@ -236,47 +237,47 @@ export default function Calculator() {
         {/* Commission Structure */}
         <Card className="card-elegant mt-8">
           <CardHeader>
-            <CardTitle className="text-2xl">מבנה עמלות שקוף</CardTitle>
+            <CardTitle className="text-2xl">{t('calculator.structure.title')}</CardTitle>
             <CardDescription>
-              כל המחירים ברורים ושקופים מראש - ללא הפתעות
+              {t('calculator.structure.subtitle')}
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-2 gap-6">
               {/* Rental Rates */}
               <div>
-                <h3 className="text-lg font-semibold mb-4 text-primary">השכרה</h3>
+                <h3 className="text-lg font-semibold mb-4 text- ">{t('calculator.structure.rental')}</h3>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center p-3 bg-secondary rounded-lg">
-                    <span>משרדים</span>
-                    <Badge variant="outline">חודש שכירות + מע"מ</Badge>
+                    <span>{t('properties.types.office')}</span>
+                    <Badge variant="outline">{t('calculator.month_rent_vat')}</Badge>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-secondary rounded-lg">
-                    <span>שטחי מסחר</span>
-                    <Badge variant="outline">חודש שכירות + מע"מ</Badge>
+                    <span>{t('calculator.commercial_spaces')}</span>
+                    <Badge variant="outline">{t('calculator.month_rent_vat')}</Badge>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-secondary rounded-lg">
-                    <span>בניינים שלמים</span>
-                    <Badge variant="outline">חודש שכירות + מע"מ</Badge>
+                    <span>{t('calculator.entire_buildings')}</span>
+                    <Badge variant="outline">{t('calculator.month_rent_vat')}</Badge>
                   </div>
                 </div>
               </div>
 
               {/* Sale Rates */}
               <div>
-                <h3 className="text-lg font-semibold mb-4 text-primary">מכירה</h3>
+                <h3 className="text-lg font-semibold mb-4 text-primary">{t('calculator.structure.sale')}</h3>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center p-3 bg-secondary rounded-lg">
-                    <span>משרדים</span>
-                    <Badge variant="outline">1.5% + מע"מ</Badge>
+                    <span>{t('properties.types.office')}</span>
+                    <Badge variant="outline">1.5% + {t('calculator.results.vat')}</Badge>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-secondary rounded-lg">
-                    <span>שטחי מסחר</span>
-                    <Badge variant="outline">1.5% + מע"מ</Badge>
+                    <span>{t('calculator.commercial_spaces')}</span>
+                    <Badge variant="outline">1.5% + {t('calculator.results.vat')}</Badge>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-secondary rounded-lg">
-                    <span>בניינים שלמים</span>
-                    <Badge variant="outline">2% + מע"מ</Badge>
+                    <span>{t('calculator.entire_buildings')}</span>
+                    <Badge variant="outline">2% + {t('calculator.results.vat')}</Badge>
                   </div>
                 </div>
               </div>

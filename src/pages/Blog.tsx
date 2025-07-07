@@ -9,88 +9,87 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Calendar, User, Search, TrendingUp, Building, DollarSign, Users } from 'lucide-react';
 import type { BlogPost } from '@/types';
 
-// Mock blog data
-const mockBlogPosts: BlogPost[] = [
-	{
-		id: '1',
-		title: 'מגמות בשוק הנדל"ן העסקי 2024',
-		excerpt: 'סקירה מקיפה של מגמות השוק, מחירים וצפיות לשנה הקרובה',
-		content: 'תוכן מלא של המאמר...',
-		author: 'שי ספז',
-		category: 'market-trends',
-		tags: ['שוק נדל"ן', 'מגמות', '2024', 'משרדים'],
-		image: '/placeholder.svg',
-		published: true,
-		createdAt: new Date('2024-01-15'),
-		updatedAt: new Date('2024-01-15'),
-	},
-	{
-		id: '2',
-		title: 'איך לבחור משרד לחברת הייטק',
-		excerpt: 'מדריך מקיף לבחירת משרד מתאים לחברות הייטק וסטארטאפים',
-		content: 'תוכן מלא של המאמר...',
-		author: 'שי ספז',
-		category: 'guides',
-		tags: ['הייטק', 'משרדים', 'מדריך', 'סטארטאפים'],
-		image: '/placeholder.svg',
-		published: true,
-		createdAt: new Date('2024-01-10'),
-		updatedAt: new Date('2024-01-10'),
-	},
-	{
-		id: '3',
-		title: 'השקעה בנדל"ן מסחרי - מה חשוב לדעת',
-		excerpt: 'כל מה שצריך לדעת לפני השקעה בנדל"ן מסחרי',
-		content: 'תוכן מלא של המאמר...',
-		author: 'שי ספז',
-		category: 'investment',
-		tags: ['השקעות', 'נדל"ן מסחרי', 'תשואה', 'ריסק'],
-		image: '/placeholder.svg',
-		published: true,
-		createdAt: new Date('2024-01-05'),
-		updatedAt: new Date('2024-01-05'),
-	},
-	{
-		id: '4',
-		title: 'דרישות התכנון הפיזי למשרדי הייטק מודרניים',
-		excerpt: 'איך לתכנן מרחב עבודה שמתאים לצרכים המודרניים של עובדי הייטק',
-		content: 'תוכן מלא של המאמר...',
-		author: 'שי ספז',
-		category: 'design',
-		tags: ['עיצוב משרדים', 'הייטק', 'תכנון', 'פרודוקטיביות'],
-		image: '/placeholder.svg',
-		published: true,
-		createdAt: new Date('2023-12-28'),
-		updatedAt: new Date('2023-12-28'),
-	},
-	{
-		id: '5',
-		title: 'זכויות ובחובות בחוזי השכרה מסחריים',
-		excerpt: 'מדריך משפטי לזכויות וחובות בחוזי השכרה במגזר המסחרי',
-		content: 'תוכן מלא של המאמר...',
-		author: 'שי ספז',
-		category: 'legal',
-		tags: ['משפט', 'חוזים', 'השכרה', 'זכויות'],
-		image: '/placeholder.svg',
-		published: true,
-		createdAt: new Date('2023-12-20'),
-		updatedAt: new Date('2023-12-20'),
-	},
-];
-
-const categories = [
-	{ id: 'all', name: 'כל הקטגוריות', icon: Building },
-	{ id: 'market-trends', name: 'מגמות שוק', icon: TrendingUp },
-	{ id: 'guides', name: 'מדריכים', icon: Building },
-	{ id: 'investment', name: 'השקעות', icon: DollarSign },
-	{ id: 'design', name: 'עיצוב משרדים', icon: Building },
-	{ id: 'legal', name: 'משפט ורגולציה', icon: Users },
-];
-
 export default function Blog() {
 	const { t } = useLanguage();
 	const [searchTerm, setSearchTerm] = useState('');
 	const [selectedCategory, setSelectedCategory] = useState('all');
+
+	const mockBlogPosts = useMemo(() => [
+		{
+			id: '1',
+			title: t('blog.posts.1.title'),
+			excerpt: t('blog.posts.1.excerpt'),
+			content: t('blog.content_placeholder'),
+			author: t('blog.author'),
+			category: 'market-trends',
+			tags: [t('blog.tags.real_estate_market'), t('blog.tags.trends'), t('blog.tags.2024'), t('blog.tags.offices')],
+			image: '/placeholder.svg',
+			published: true,
+			createdAt: new Date('2024-01-15'),
+			updatedAt: new Date('2024-01-15'),
+		},
+		{
+			id: '2',
+			title: t('blog.posts.2.title'),
+			excerpt: t('blog.posts.2.excerpt'),
+			content: t('blog.content_placeholder'),
+			author: t('blog.author'),
+			category: 'guides',
+			tags: [t('blog.tags.hitech'), t('blog.tags.offices'), t('blog.tags.guide'), t('blog.tags.startups')],
+			image: '/placeholder.svg',
+			published: true,
+			createdAt: new Date('2024-01-10'),
+			updatedAt: new Date('2024-01-10'),
+		},
+		{
+			id: '3',
+			title: t('blog.posts.3.title'),
+			excerpt: t('blog.posts.3.excerpt'),
+			content: t('blog.content_placeholder'),
+			author: t('blog.author'),
+			category: 'investment',
+			tags: [t('blog.tags.investments'), t('blog.tags.commercial_real_estate'), t('blog.tags.yield'), t('blog.tags.risk')],
+			image: '/placeholder.svg',
+			published: true,
+			createdAt: new Date('2024-01-05'),
+			updatedAt: new Date('2024-01-05'),
+		},
+		{
+			id: '4',
+			title: t('blog.posts.4.title'),
+			excerpt: t('blog.posts.4.excerpt'),
+			content: t('blog.content_placeholder'),
+			author: t('blog.author'),
+			category: 'design',
+			tags: [t('blog.tags.office_design'), t('blog.tags.hitech'), t('blog.tags.planning'), t('blog.tags.productivity')],
+			image: '/placeholder.svg',
+			published: true,
+			createdAt: new Date('2023-12-28'),
+			updatedAt: new Date('2023-12-28'),
+		},
+		{
+			id: '5',
+			title: t('blog.posts.5.title'),
+			excerpt: t('blog.posts.5.excerpt'),
+			content: t('blog.content_placeholder'),
+			author: t('blog.author'),
+			category: 'legal',
+			tags: [t('blog.tags.law'), t('blog.tags.contracts'), t('blog.tags.rental'), t('blog.tags.rights')],
+			image: '/placeholder.svg',
+			published: true,
+			createdAt: new Date('2023-12-20'),
+			updatedAt: new Date('2023-12-20'),
+		},
+	], [t]);
+
+	const categories = useMemo(() => [
+		{ id: 'all', name: t('blog.categories.all'), icon: Building },
+		{ id: 'market-trends', name: t('blog.categories.market_trends'), icon: TrendingUp },
+		{ id: 'guides', name: t('blog.categories.guides'), icon: Building },
+		{ id: 'investment', name: t('blog.categories.investment'), icon: DollarSign },
+		{ id: 'design', name: t('blog.categories.design'), icon: Building },
+		{ id: 'legal', name: t('blog.categories.legal'), icon: Users },
+	], [t]);
 
 	const filteredPosts = useMemo(() => {
 		return mockBlogPosts.filter((post) => {
@@ -102,7 +101,7 @@ export default function Blog() {
 
 			return matchesSearch && matchesCategory && post.published;
 		});
-	}, [searchTerm, selectedCategory]);
+	}, [searchTerm, selectedCategory, mockBlogPosts]);
 
 	const getCategoryName = (categoryId: string) => {
 		const category = categories.find((cat) => cat.id === categoryId);
@@ -110,7 +109,8 @@ export default function Blog() {
 	};
 
 	const formatDate = (date: Date) => {
-		return new Intl.DateTimeFormat('he-IL', {
+		const locale = t('locale');
+		return new Intl.DateTimeFormat(locale, {
 			year: 'numeric',
 			month: 'long',
 			day: 'numeric',
@@ -124,10 +124,10 @@ export default function Blog() {
 			<div className="pt-20 pb-16">
 				<div className="container mx-auto px-4">
 					{/* Header */}
-				<div className="text-center mb-16">
-					<h1 className="text-4xl font-bold mb-4 text-gradient-primary">בלוג נדל"ן</h1>
+				<div className="text-center mb-6">
+					<h1 className="text-6xl font-bold mb-1 text-gradient-primary">{t('blog.title')}</h1>
 					<p className="text-xl text-muted-foreground">
-						מאמרים, מדריכים וכל הידע שצריך בעולם הנדל"ן העסקי
+						{t('blog.subtitle')}
 					</p>
 				</div>
 
@@ -137,7 +137,7 @@ export default function Blog() {
 						<div className="relative">
 							<Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
 							<Input
-								placeholder="חיפוש במאמרים..."
+								placeholder={t('blog.search.placeholder')}
 								value={searchTerm}
 								onChange={(e) => setSearchTerm(e.target.value)}
 								className="pl-10"
@@ -145,7 +145,7 @@ export default function Blog() {
 						</div>
 						<Select value={selectedCategory} onValueChange={setSelectedCategory}>
 							<SelectTrigger>
-								<SelectValue placeholder="בחר קטגוריה" />
+								<SelectValue placeholder={t('blog.category.placeholder')} />
 							</SelectTrigger>
 							<SelectContent>
 								{categories.map((category) => (
@@ -157,7 +157,7 @@ export default function Blog() {
 						</Select>
 					</div>
 					<div className="text-sm text-muted-foreground">
-						נמצאו {filteredPosts.length} מאמרים
+						{t('blog.results_count').replace('{count}', filteredPosts.length.toString())}
 					</div>
 				</div>
 
@@ -172,7 +172,7 @@ export default function Blog() {
 									className="w-full h-64 md:h-full object-cover"
 								/>
 								<Badge className="absolute top-4 right-4 bg-accent text-accent-foreground">
-									מאמר מומלץ
+									{t('blog.featured')}
 								</Badge>
 							</div>
 							<div className="p-6 flex flex-col justify-between">
@@ -202,7 +202,7 @@ export default function Blog() {
 										))}
 									</div>
 								</div>
-								<Button className="btn-primary w-full">קרא עוד</Button>
+								<Button className="btn-primary w-full">{t('blog.read_more')}</Button>
 							</div>
 						</div>
 					</Card>
@@ -253,7 +253,7 @@ export default function Blog() {
 									)}
 								</div>
 
-								<Button className="btn-primary w-full">קרא עוד</Button>
+								<Button className="btn-primary w-full">{t('blog.read_more')}</Button>
 							</CardContent>
 						</Card>
 					))}
@@ -262,7 +262,7 @@ export default function Blog() {
 				{filteredPosts.length === 0 && (
 					<div className="text-center py-12">
 						<p className="text-xl text-muted-foreground mb-4">
-							לא נמצאו מאמרים התואמים לחיפוש
+							{t('blog.no_results')}
 						</p>
 						<Button
 							onClick={() => {
@@ -271,7 +271,7 @@ export default function Blog() {
 							}}
 							className="btn-accent"
 						>
-							נקה סינון
+							{t('blog.clear_filters')}
 						</Button>
 					</div>
 				)}
@@ -279,14 +279,14 @@ export default function Blog() {
 				{/* Newsletter Signup */}
 				<div className="card-elegant p-8 text-center">
 					<h2 className="text-2xl font-bold mb-4 text-gradient-primary">
-						הישארו מעודכנים
+						{t('blog.newsletter.title')}
 					</h2>
 					<p className="text-muted-foreground mb-6">
-						הירשמו לניוזלטר שלנו וקבלו עדכונים שבועיים על השוק
+						{t('blog.newsletter.subtitle')}
 					</p>
 					<div className="flex gap-4 max-w-md mx-auto">
-						<Input placeholder="כתובת מייל" className="flex-1" />
-						<Button className="btn-accent">הרשמה</Button>
+						<Input placeholder={t('blog.newsletter.placeholder')} className="flex-1" />
+						<Button className="btn-accent">{t('blog.newsletter.submit')}</Button>
 					</div>
 				</div>
 			</div>

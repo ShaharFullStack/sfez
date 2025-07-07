@@ -161,7 +161,7 @@ export default function Services() {
                 <div className="flex flex-col items-center gap-4">
                   <h3 className="text-xl font-semibold">{t('services.badges.guarantee')}</h3>
                   <img 
-                    src="/images/wty.png" 
+                    src={t('services.warranty.image')} 
                     alt="Warranty Certificate" 
                     className="max-w-full h-auto rounded-lg shadow-lg"
                   />
