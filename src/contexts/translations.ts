@@ -134,6 +134,8 @@ export const translations = {
     'contact.message': 'הודעה',
     'contact.submit': 'שלח הודעה',
     'contact.success': 'ההודעה נשלחה בהצלחה! נחזור אליכם בקרוב.',
+    'contact.whatsapp': 'WhatsApp',
+    'contact.call': 'התקשר',
     
     // Footer
     'footer.tagline': 'הנכס הנכון, ברגע הנכון, עם הליווי הנכון',
@@ -275,6 +277,8 @@ export const translations = {
     'contact.message': 'Message',
     'contact.submit': 'Send Message',
     'contact.success': 'Message sent successfully! We will get back to you soon.',
+    'contact.whatsapp': 'WhatsApp',
+    'contact.call': 'Call',
     
     // Footer
     'footer.tagline': 'The Right Property, The Right Time, The Right Guidance',

@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Shield, Heart, Target, Users, Award, Building, TrendingUp, Handshake } from 'lucide-react';
+import ContactButton from '@/components/ContactButton';
 
 const values = [
 	{
@@ -93,13 +94,15 @@ export default function About() {
 			<div className="pt-20 pb-16">
 				<div className="container mx-auto px-4">
 					{/* Hero Section */}
-				<div className="text-center mb-16">
-					<h1 className="text-4xl font-bold mb-4 text-gradient-primary">אודות ספז נדל"ן</h1>
-					<p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-						מומחים בנדל"ן עסקי, מחויבות לערכים חברתיים ומקצועיות ללא פשרות
-					</p>
-					<div className="w-32 h-32 bg-gradient-primary rounded-full mx-auto mb-8 flex items-center justify-center">
-						<span className="text-white font-bold text-4xl">ש</span>
+					<div className="text-center mb-16">
+						<h1 className="text-4xl font-bold mb-4 text-gradient-primary">אודות ספז נדל"ן</h1>
+						<p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+							מומחים בנדל"ן עסקי, מחוייבים לערכים חברתיים ומקצועיות ללא פשרות.
+						</p>
+					<div className="w-32 h-32 bg-gradient-primary rounded-full mx-auto mb-6 flex items-center justify-center">
+						<span className="text-white font-bold text-4xl">
+							<img src="\images\logo.jpg" alt="Shai Sfez שי ספז" />
+						</span>
 					</div>
 				</div>
 
@@ -132,8 +135,10 @@ export default function About() {
 							</div>
 						</div>
 						<div className="text-center">
-							<div className="w-64 h-64 bg-gradient-hero rounded-lg mx-auto mb-4 flex items-center justify-center">
-								<span className="text-white font-bold text-6xl">ש</span>
+							<div className="w-64 h-64 bg-gradient-hero rounded-full mx-auto mb-4 flex items-center justify-center">
+								<span className="text-white font-bold text-6xl">
+									<img src="\images\Shai.jpg" alt="שי ספז" className="rounded-full" />
+								</span>
 							</div>
 							<p className="text-sm text-muted-foreground">"הנכס הנכון, ברגע הנכון, עם הליווי הנכון"</p>
 						</div>
@@ -227,13 +232,17 @@ export default function About() {
 						<p className="text-xl text-muted-foreground mb-6">
 							מוכנים להיות חלק מהסיפור שלנו? בואו נדבר על איך נוכל לעזור לכם
 						</p>
-						<Button size="lg" className="btn-accent">
+						<ContactButton 
+							size="lg" 
+							className="btn-accent"
+							type="whatsapp"
+						>
 							📞 קבעו פגישת היכרות
-						</Button>
+						</ContactButton>
 					</div>
 				</div>
 			</div>
-			</div>
+		</div>
 		</div>
 	);
 }

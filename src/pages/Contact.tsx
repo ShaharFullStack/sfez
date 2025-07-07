@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import { Phone, Mail, MapPin, Clock, Building, Send, Shield, Users } from 'lucide-react';
+import ContactButton from '@/components/ContactButton';
 
 export default function Contact() {
   const { t } = useLanguage();
@@ -63,11 +64,11 @@ export default function Contact() {
       <div className="pt-20 pb-16">
         <div className="container mx-auto px-4">
           {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4 text-gradient-primary">צור קשר</h1>
-          <p className="text-xl text-muted-foreground mb-8">
-            בואו נדבר על הנכס הבא שלכם - ייעוץ ראשוני ללא התחייבות
-          </p>
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold mb-4 text-gradient-primary">צור קשר</h1>
+            <p className="text-xl text-muted-foreground mb-8">
+              בואו נדבר על הנכס הבא שלכם - ייעוץ ראשוני ללא התחייבות
+            </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Badge className="bg-accent text-accent-foreground text-sm px-4 py-2">
               <Shield className="h-4 w-4 mr-2" />
@@ -349,9 +350,14 @@ export default function Contact() {
                 <p className="text-sm opacity-90 mb-4">
                   עבור עסקאות דחופות אנחנו זמינים 24/7
                 </p>
-                <Button variant="secondary" className="w-full">
+                <ContactButton 
+                  variant="secondary" 
+                  size="lg" 
+                  className="w-full"
+                  type="whatsapp"
+                >
                   📱 שליחת הודעת חירום
-                </Button>
+                </ContactButton>
               </CardContent>
             </Card>
           </div>

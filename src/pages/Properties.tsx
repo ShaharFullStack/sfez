@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Search, MapPin, Square, Phone, Mail } from 'lucide-react';
 import type { Property } from '@/types';
+import ContactButton from '@/components/ContactButton';
 
 // Mock data - in a real app this would come from an API
 const mockProperties: Property[] = [

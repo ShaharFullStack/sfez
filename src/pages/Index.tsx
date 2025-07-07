@@ -4,6 +4,25 @@ import { Button } from '@/components/ui/button';
 
 const HomePage = () => {
   const { t } = useLanguage();
+  
+  const phoneNumber = '+972509333901';
+  const whatsappUrl = `https://wa.me/${phoneNumber.replace(/[^0-9]/g, '')}`;
+  
+  const handleConsultationClick = () => {
+    window.open(whatsappUrl, '_blank');
+  };
+  
+  const handlePropertiesClick = () => {
+    // Navigate to properties section or page
+    const propertiesSection = document.getElementById('properties');
+    if (propertiesSection) {
+      propertiesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  
+  const handleContactClick = () => {
+    window.open(whatsappUrl, '_blank');
+  };
 
   return (
     <div className="min-h-screen">
@@ -50,10 +69,19 @@ const HomePage = () => {
                 </p>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <Button size="lg" className="btn-accent text-base sm:text-lg px-6 py-3 sm:px-8 sm:py-4">
+              <Button 
+                size="lg" 
+                className="btn-accent text-base sm:text-lg px-6 py-3 sm:px-8 sm:py-4"
+                onClick={handleConsultationClick}
+              >
                 {t('hero.cta.consultation')}
               </Button>
-              <Button size="lg" variant="outline" className="btn-glass text-base sm:text-lg px-6 py-3 sm:px-8 sm:py-4">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="btn-glass text-base sm:text-lg px-6 py-3 sm:px-8 sm:py-4"
+                onClick={handlePropertiesClick}
+              >
                 {t('hero.cta.properties')}
               </Button>
               </div>
@@ -100,7 +128,11 @@ const HomePage = () => {
           <p className="text-lg sm:text-xl text-muted-foreground mb-8 sm:mb-12">{t('contact.subtitle')}</p>
 
           <div className="max-w-sm mx-auto">
-            <Button size="lg" className="btn-primary w-full text-base sm:text-lg py-3 sm:py-4">
+            <Button 
+              size="lg" 
+              className="btn-primary w-full text-base sm:text-lg py-3 sm:py-4"
+              onClick={handleContactClick}
+            >
               📞 צור קשר עכשיו
             </Button>
           </div>

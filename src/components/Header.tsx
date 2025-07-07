@@ -14,24 +14,24 @@ export const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-4">
             <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-xl">
-                <img src="/images/sfezLogo.png" alt="" />
+                <img src="/images/sfezLogo.png" alt="Sfez Logo" />
               </span>
             </div>
-            <div className="font-bold text-xl text-gradient-primary">SPZ נדל"ן</div>
+            <div className="font-bold text-xl text-gradient-primary">SFEZ נדל"ן</div>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6 justify-around flex-1">
             <a href="/" className="link-elegant">{t('nav.home')}</a>
-            <a href="/properties" className="link-elegant">{t('nav.properties')}</a>
-            <a href="/services" className="link-elegant">{t('nav.services')}</a>
-            <a href="/about" className="link-elegant">{t('nav.about')}</a>
-            <a href="/blog" className="link-elegant">{t('nav.blog')}</a>
-            <a href="/calculator" className="link-elegant">{t('nav.calculator')}</a>
-            <a href="/contact" className="link-elegant">{t('nav.contact')}</a>
+            <a href="/properties" className="link-elegant ">{t('nav.properties')}</a>
+            <a href="/services" className="link-elegant ">{t('nav.services')}</a>
+            <a href="/about" className="link-elegant ">{t('nav.about')}</a>
+            <a href="/blog" className="link-elegant ">{t('nav.blog')}</a>
+            <a href="/calculator" className="link-elegant ">{t('nav.calculator')}</a>
+            <a href="/contact" className="link-elegant ">{t('nav.contact')}</a>
           </nav>
 
           {/* Controls */}

@@ -3,10 +3,15 @@ import { Header } from '../components/Header';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
+import { Dialog, DialogContent, DialogTrigger } from '../components/ui/dialog';
 import { Building, Store, Home, Shield, Users, Calculator } from 'lucide-react';
+import ContactButton from '@/components/ContactButton';
+import { useState } from 'react';
 
 export default function Services() {
   const { t } = useLanguage();
+  const [openDialog, setOpenDialog] = useState(false);
+  const [warrantyModalOpen, setWarrantyModalOpen] = useState(false);
 
   const services = [
     {
@@ -145,10 +150,24 @@ export default function Services() {
             {t('services.subtitle')}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Badge className="bg-accent text-accent-foreground text-sm px-4 py-2">
-              <Shield className="h-4 w-4 mr-2" />
-              {t('services.badges.guarantee')}
-            </Badge>
+            <Dialog open={warrantyModalOpen} onOpenChange={setWarrantyModalOpen}>
+              <DialogTrigger asChild>
+                <Badge className="bg-accent text-accent-foreground text-sm px-4 py-2 cursor-pointer hover:bg-accent/80 transition-colors">
+                  <Shield className="h-4 w-4 mr-2" />
+                  {t('services.badges.guarantee')}
+                </Badge>
+              </DialogTrigger>
+              <DialogContent className="max-w-3xl w-full">
+                <div className="flex flex-col items-center gap-4">
+                  <h3 className="text-xl font-semibold">{t('services.badges.guarantee')}</h3>
+                  <img 
+                    src="/images/wty.png" 
+                    alt="Warranty Certificate" 
+                    className="max-w-full h-auto rounded-lg shadow-lg"
+                  />
+                </div>
+              </DialogContent>
+            </Dialog>
             <Badge className="bg-primary text-primary-foreground text-sm px-4 py-2">
               <Users className="h-4 w-4 mr-2" />
               {t('services.badges.personal')}
@@ -216,9 +235,14 @@ export default function Services() {
                     ))}
                   </div>
                   <div className="mt-4">
-                    <Button className="btn-primary w-full">
+                    <ContactButton 
+                      variant="default" 
+                      size="lg" 
+                      className="btn-primary w-full"
+                      type="whatsapp"
+                    >
                       {t('services.cta.consultation')}
-                    </Button>
+                    </ContactButton>
                   </div>
                 </div>
               </CardContent>
@@ -236,17 +260,21 @@ export default function Services() {
               {t('services.cta.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="btn-accent">
+              <ContactButton 
+                size="lg" 
+                className="btn-accent"
+                type="whatsapp"
+              >
                 {t('services.cta.contact')}
-              </Button>
+              </ContactButton>
               <Button size="lg" variant="outline" className="btn-glass">
                 {t('services.cta.calculator')}
               </Button>
             </div>
           </div>
         </div>
+        </div>
       </div>
-    </div>
     </div>
   );
 }
