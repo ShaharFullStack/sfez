@@ -45,7 +45,7 @@ const WhatsAppBubble = () => {
           {/* Main bubble button */}
           <Button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-lg flex items-center justify-center animate-pulse"
+            className="w-12 h-12 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-lg flex items-center justify-center animate-pulse"
           >
             {isExpanded ? (
               <span className="text-2xl">✕</span>

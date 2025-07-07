@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { useTheme } from 'next-themes';
+import { ThemeProvider, useTheme } from 'next-themes';
 import { useLanguage } from '@/contexts/useLanguage';
 import { Moon, Sun, Menu, X } from 'lucide-react';
 
@@ -10,17 +10,19 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 w-full bg-background/80 backdrop-blur-md border-b border-border z-50">
+    <header className="fixed top-0 w-full bg-secondary/70 backdrop-blur-sm border-b border-border z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-4">
-            <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
+          <div className="flex items-center space-x-4 gap-5">
+            <div className="w-16 h-16 bg-gradient-primary border-primary border-2 flex items-center justify-center">
               <span className="text-white font-bold text-xl">
-                <img src="/images/sfezLogo.png" alt="Sfez Logo" />
+                <img 
+                  src={theme === 'dark' ? "/images/darkLogo.png" : "/images/lightLogo.png"} 
+                  alt="Sfez Logo" 
+                />
               </span>
             </div>
-            <div className="font-bold text-xl text-gradient-primary">SFEZ נדל"ן</div>
           </div>
 
           {/* Desktop Navigation */}
