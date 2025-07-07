@@ -126,6 +126,12 @@
     @apply border-border;
   }
 
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+  }
+
   body {
     @apply bg-background text-foreground font-serif antialiased;
     font-family: 'Abhaya Libre', 'Libre Franklin', serif;
@@ -208,23 +214,22 @@
   .hero-video-fullscreen {
     position: absolute;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100vw;
-    height: 100vh;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: 0;
   }
 
   .hero-video-fullscreen video {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
   }
 
   /* Ensure hero section spans full width */
   .hero-section-fullwidth {
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
+    width: 100%;
+    margin-left: 0;
   }
 }
 
