@@ -135,7 +135,7 @@ const HomePage = () => {
               className="btn-primary w-full text-base sm:text-lg py-3 sm:py-4"
               onClick={handleContactClick}
             >
-              📞 צור קשר עכשיו
+              {t('services.cta.contact')}
             </Button>
           </div>
         </div>
