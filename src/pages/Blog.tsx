@@ -7,35 +7,35 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Calendar, User, Search, TrendingUp, Building, DollarSign, Users } from 'lucide-react';
-import type { BlogPost } from '@/types';
+import type { ArticlePost } from '@/types';
 
-export default function Blog() {
+function Articles() {
 	const { t } = useLanguage();
 	const [searchTerm, setSearchTerm] = useState('');
 	const [selectedCategory, setSelectedCategory] = useState('all');
 
-	const mockBlogPosts = useMemo(() => [
+const mockArticlePosts = useMemo(() => [
 		{
 			id: '1',
-			title: t('blog.posts.1.title'),
-			excerpt: t('blog.posts.1.excerpt'),
-			content: t('blog.content_placeholder'),
-			author: t('blog.author'),
-			category: 'market-trends',
-			tags: [t('blog.tags.real_estate_market'), t('blog.tags.trends'), t('blog.tags.2024'), t('blog.tags.offices')],
-			image: '/placeholder.svg',
-			published: true,
-			createdAt: new Date('2024-01-15'),
-			updatedAt: new Date('2024-01-15'),
+	title: t('articles.posts.1.title'),
+	excerpt: t('articles.posts.1.excerpt'),
+	content: t('articles.content_placeholder'),
+	author: t('articles.author'),
+	category: 'market-trends',
+	tags: [t('articles.tags.real_estate_market'), t('articles.tags.trends'), t('articles.tags.2024'), t('articles.tags.offices')],
+	image: '/placeholder.svg',
+	published: true,
+	createdAt: new Date('2024-01-15'),
+	updatedAt: new Date('2024-01-15'),
 		},
 		{
 			id: '2',
-			title: t('blog.posts.2.title'),
-			excerpt: t('blog.posts.2.excerpt'),
-			content: t('blog.content_placeholder'),
-			author: t('blog.author'),
-			category: 'guides',
-			tags: [t('blog.tags.hitech'), t('blog.tags.offices'), t('blog.tags.guide'), t('blog.tags.startups')],
+	title: t('articles.posts.2.title'),
+	excerpt: t('articles.posts.2.excerpt'),
+	content: t('articles.content_placeholder'),
+	author: t('articles.author'),
+	category: 'guides',
+	tags: [t('articles.tags.hitech'), t('articles.tags.offices'), t('articles.tags.guide'), t('articles.tags.startups')],
 			image: '/placeholder.svg',
 			published: true,
 			createdAt: new Date('2024-01-10'),
@@ -43,12 +43,12 @@ export default function Blog() {
 		},
 		{
 			id: '3',
-			title: t('blog.posts.3.title'),
-			excerpt: t('blog.posts.3.excerpt'),
-			content: t('blog.content_placeholder'),
-			author: t('blog.author'),
-			category: 'investment',
-			tags: [t('blog.tags.investments'), t('blog.tags.commercial_real_estate'), t('blog.tags.yield'), t('blog.tags.risk')],
+	title: t('articles.posts.3.title'),
+	excerpt: t('articles.posts.3.excerpt'),
+	content: t('articles.content_placeholder'),
+	author: t('articles.author'),
+	category: 'investment',
+	tags: [t('articles.tags.investments'), t('articles.tags.commercial_real_estate'), t('articles.tags.yield'), t('articles.tags.risk')],
 			image: '/placeholder.svg',
 			published: true,
 			createdAt: new Date('2024-01-05'),
@@ -56,12 +56,12 @@ export default function Blog() {
 		},
 		{
 			id: '4',
-			title: t('blog.posts.4.title'),
-			excerpt: t('blog.posts.4.excerpt'),
-			content: t('blog.content_placeholder'),
-			author: t('blog.author'),
-			category: 'design',
-			tags: [t('blog.tags.office_design'), t('blog.tags.hitech'), t('blog.tags.planning'), t('blog.tags.productivity')],
+	title: t('articles.posts.4.title'),
+	excerpt: t('articles.posts.4.excerpt'),
+	content: t('articles.content_placeholder'),
+	author: t('articles.author'),
+	category: 'design',
+	tags: [t('articles.tags.office_design'), t('articles.tags.hitech'), t('articles.tags.planning'), t('articles.tags.productivity')],
 			image: '/placeholder.svg',
 			published: true,
 			createdAt: new Date('2023-12-28'),
@@ -69,12 +69,12 @@ export default function Blog() {
 		},
 		{
 			id: '5',
-			title: t('blog.posts.5.title'),
-			excerpt: t('blog.posts.5.excerpt'),
-			content: t('blog.content_placeholder'),
-			author: t('blog.author'),
-			category: 'legal',
-			tags: [t('blog.tags.law'), t('blog.tags.contracts'), t('blog.tags.rental'), t('blog.tags.rights')],
+	title: t('articles.posts.5.title'),
+	excerpt: t('articles.posts.5.excerpt'),
+	content: t('articles.content_placeholder'),
+	author: t('articles.author'),
+	category: 'legal',
+	tags: [t('articles.tags.law'), t('articles.tags.contracts'), t('articles.tags.rental'), t('articles.tags.rights')],
 			image: '/placeholder.svg',
 			published: true,
 			createdAt: new Date('2023-12-20'),
@@ -82,17 +82,17 @@ export default function Blog() {
 		},
 	], [t]);
 
-	const categories = useMemo(() => [
-		{ id: 'all', name: t('blog.categories.all'), icon: Building },
-		{ id: 'market-trends', name: t('blog.categories.market_trends'), icon: TrendingUp },
-		{ id: 'guides', name: t('blog.categories.guides'), icon: Building },
-		{ id: 'investment', name: t('blog.categories.investment'), icon: DollarSign },
-		{ id: 'design', name: t('blog.categories.design'), icon: Building },
-		{ id: 'legal', name: t('blog.categories.legal'), icon: Users },
-	], [t]);
+const categories = useMemo(() => [
+	{ id: 'all', name: t('articles.categories.all'), icon: Building },
+	{ id: 'market-trends', name: t('articles.categories.market_trends'), icon: TrendingUp },
+	{ id: 'guides', name: t('articles.categories.guides'), icon: Building },
+	{ id: 'investment', name: t('articles.categories.investment'), icon: DollarSign },
+	{ id: 'design', name: t('articles.categories.design'), icon: Building },
+	{ id: 'legal', name: t('articles.categories.legal'), icon: Users },
+], [t]);
 
-	const filteredPosts = useMemo(() => {
-		return mockBlogPosts.filter((post) => {
+const filteredPosts = useMemo(() => {
+	return mockArticlePosts.filter((post) => {
 			const matchesSearch =
 				post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
 				post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -101,7 +101,7 @@ export default function Blog() {
 
 			return matchesSearch && matchesCategory && post.published;
 		});
-	}, [searchTerm, selectedCategory, mockBlogPosts]);
+}, [searchTerm, selectedCategory, mockArticlePosts]);
 
 	const getCategoryName = (categoryId: string) => {
 		const category = categories.find((cat) => cat.id === categoryId);
@@ -117,7 +117,7 @@ export default function Blog() {
 		}).format(date);
 	};
 
-	return (
+return (
 		<div className="min-h-screen">
 			<Header />
 			
@@ -125,10 +125,10 @@ export default function Blog() {
 				<div className="container mx-auto px-4">
 					{/* Header */}
 				<div className="text-center mb-6">
-					<h1 className="text-6xl font-bold mb-1 text-gradient-primary">{t('blog.title')}</h1>
-					<p className="text-xl text-muted-foreground">
-						{t('blog.subtitle')}
-					</p>
+	<h1 className="text-6xl font-bold mb-1 text-gradient-primary">{t('articles.title')}</h1>
+	<p className="text-xl text-muted-foreground">
+		{t('articles.subtitle')}
+	</p>
 				</div>
 
 				{/* Search and Filter */}
@@ -136,8 +136,8 @@ export default function Blog() {
 					<div className="grid md:grid-cols-2 gap-4 mb-6">
 						<div className="relative">
 							<Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-							<Input
-								placeholder={t('blog.search.placeholder')}
+	<Input
+		placeholder={t('articles.search.placeholder')}
 								value={searchTerm}
 								onChange={(e) => setSearchTerm(e.target.value)}
 								className="pl-10"
@@ -145,7 +145,7 @@ export default function Blog() {
 						</div>
 						<Select value={selectedCategory} onValueChange={setSelectedCategory}>
 							<SelectTrigger>
-								<SelectValue placeholder={t('blog.category.placeholder')} />
+	<SelectValue placeholder={t('articles.category.placeholder')} />
 							</SelectTrigger>
 							<SelectContent>
 								{categories.map((category) => (
@@ -156,9 +156,9 @@ export default function Blog() {
 							</SelectContent>
 						</Select>
 					</div>
-					<div className="text-sm text-muted-foreground">
-						{t('blog.results_count').replace('{count}', filteredPosts.length.toString())}
-					</div>
+	<div className="text-sm text-muted-foreground">
+		{t('articles.results_count').replace('{count}', filteredPosts.length.toString())}
+	</div>
 				</div>
 
 				{/* Featured Post */}
@@ -171,9 +171,9 @@ export default function Blog() {
 									alt={filteredPosts[0].title}
 									className="w-full h-64 md:h-full object-cover"
 								/>
-								<Badge className="absolute top-4 right-4 bg-accent text-accent-foreground">
-									{t('blog.featured')}
-								</Badge>
+	<Badge className="absolute top-4 right-4 bg-accent text-accent-foreground">
+		{t('articles.featured')}
+	</Badge>
 							</div>
 							<div className="p-6 flex flex-col justify-between">
 								<div>
@@ -202,7 +202,7 @@ export default function Blog() {
 										))}
 									</div>
 								</div>
-								<Button className="btn-primary w-full">{t('blog.read_more')}</Button>
+	<Button className="btn-primary w-full">{t('articles.read_more')}</Button>
 							</div>
 						</div>
 					</Card>
@@ -210,7 +210,7 @@ export default function Blog() {
 
 				{/* Posts Grid */}
 				<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-					{filteredPosts.slice(1).map((post) => (
+	{filteredPosts.slice(1).map((post) => (
 						<Card key={post.id} className="card-elegant hover-scale group">
 							<div className="relative overflow-hidden rounded-t-lg">
 								<img
@@ -230,8 +230,8 @@ export default function Blog() {
 										{formatDate(post.createdAt)}
 									</div>
 								</div>
-								<CardTitle className="text-lg leading-tight">{post.title}</CardTitle>
-								<CardDescription className="text-sm">{post.excerpt}</CardDescription>
+	<CardTitle className="text-lg leading-tight">{post.title}</CardTitle>
+	<CardDescription className="text-sm">{post.excerpt}</CardDescription>
 							</CardHeader>
 
 							<CardContent className="space-y-4">
@@ -253,7 +253,7 @@ export default function Blog() {
 									)}
 								</div>
 
-								<Button className="btn-primary w-full">{t('blog.read_more')}</Button>
+	<Button className="btn-primary w-full">{t('articles.read_more')}</Button>
 							</CardContent>
 						</Card>
 					))}
@@ -261,32 +261,32 @@ export default function Blog() {
 
 				{filteredPosts.length === 0 && (
 					<div className="text-center py-12">
-						<p className="text-xl text-muted-foreground mb-4">
-							{t('blog.no_results')}
-						</p>
-						<Button
-							onClick={() => {
-								setSearchTerm('');
-								setSelectedCategory('all');
-							}}
-							className="btn-accent"
-						>
-							{t('blog.clear_filters')}
-						</Button>
+	<p className="text-xl text-muted-foreground mb-4">
+		{t('articles.no_results')}
+	</p>
+	<Button
+		onClick={() => {
+			setSearchTerm('');
+			setSelectedCategory('all');
+		}}
+		className="btn-accent"
+	>
+		{t('articles.clear_filters')}
+	</Button>
 					</div>
 				)}
 
 				{/* Newsletter Signup */}
 				<div className="card-elegant p-8 text-center">
-					<h2 className="text-2xl font-bold mb-4 text-gradient-primary">
-						{t('blog.newsletter.title')}
-					</h2>
-					<p className="text-muted-foreground mb-6">
-						{t('blog.newsletter.subtitle')}
-					</p>
+	<h2 className="text-2xl font-bold mb-4 text-gradient-primary">
+		{t('articles.newsletter.title')}
+	</h2>
+	<p className="text-muted-foreground mb-6">
+		{t('articles.newsletter.subtitle')}
+	</p>
 					<div className="flex gap-4 max-w-md mx-auto">
-						<Input placeholder={t('blog.newsletter.placeholder')} className="flex-1" />
-						<Button className="btn-accent">{t('blog.newsletter.submit')}</Button>
+	<Input placeholder={t('articles.newsletter.placeholder')} className="flex-1" />
+	<Button className="btn-accent">{t('articles.newsletter.submit')}</Button>
 					</div>
 				</div>
 			</div>
@@ -294,3 +294,6 @@ export default function Blog() {
 		</div>
 	);
 }
+
+// For backward compatibility
+export default Articles;

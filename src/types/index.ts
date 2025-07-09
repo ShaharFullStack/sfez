@@ -37,7 +37,7 @@ export interface Client {
   createdAt: Date;
 }
 
-export interface BlogPost {
+export interface ArticlePost {
   id: string;
   title: string;
   excerpt: string;

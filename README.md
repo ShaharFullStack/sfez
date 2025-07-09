@@ -122,7 +122,7 @@ src/
 │   ├── About.tsx       # עמוד אודות
 │   ├── Services.tsx    # עמוד שירותים
 │   ├── Properties.tsx  # עמוד נכסים
-│   ├── Blog.tsx        # עמוד המאמרים
+│   ├── Articles.tsx    # עמוד המאמרים
 │   └── Contact.tsx     # עמוד יצירת קשר
 ├── types/              # הגדרות TypeScript
 └── assets/             # קבצי מדיה

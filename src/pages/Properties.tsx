@@ -23,10 +23,10 @@ const mockProperties: Property[] = [
 		location: 'Tel Aviv',
 		address: 'Rothschild Blvd 1, Tel Aviv',
 		features: ['Parking', 'Air Conditioning', 'High Speed Internet', 'Meeting Rooms'],
-		images: ['/placeholder.svg'],
+		images: ['/images/office1.png'],
 		contactInfo: {
 			name: 'Shai Sfez',
-			phone: '+972-50-123-4567',
+			phone: '+972-50-933-3901',
 			email: 'shai@sfez-nadlan.com'
 		},
 		createdAt: new Date(),
@@ -43,10 +43,10 @@ const mockProperties: Property[] = [
 		location: 'Ramat Gan',
 		address: 'Diamond Exchange District, Ramat Gan',
 		features: ['High Visibility', 'Ground Floor', 'Flexible Layout', 'Storage'],
-		images: ['/placeholder.svg'],
+		images: ['/images/image1.png'],
 		contactInfo: {
 			name: 'Shai Sfez',
-			phone: '+972-50-123-4567',
+			phone: '+972-50-933-3901',
 			email: 'shai@sfez-nadlan.com'
 		},
 		createdAt: new Date(),
@@ -73,10 +73,10 @@ export default function Properties() {
 			location: 'Tel Aviv',
 			address: 'Rothschild Blvd 1, Tel Aviv',
 			features: [t('properties.features.parking'), t('properties.features.ac'), t('properties.features.internet'), t('properties.features.meeting_rooms')],
-			images: ['/placeholder.svg'],
+			images: ['/images/office1.png'],
 			contactInfo: {
 				name: 'Shai Sfez',
-				phone: '+972-50-123-4567',
+				phone: '+972-50-933-3901',
 				email: 'shai@sfez-nadlan.com'
 			},
 			createdAt: new Date(),
@@ -93,10 +93,10 @@ export default function Properties() {
 			location: 'Ramat Gan',
 			address: 'Diamond Exchange District, Ramat Gan',
 			features: [t('properties.features.visibility'), t('properties.features.ground_floor'), t('properties.features.flexible'), t('properties.features.storage')],
-			images: ['/placeholder.svg'],
+			images: ['/images/office2.png'],
 			contactInfo: {
 				name: 'Shai Sfez',
-				phone: '+972-50-123-4567',
+				phone: '+972-50-933-3901',
 				email: 'shai@sfez-nadlan.com'
 			},
 			createdAt: new Date(),

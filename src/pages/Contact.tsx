@@ -264,7 +264,7 @@ export default function Contact() {
                   <Mail className="h-5 w-5 text-primary mt-1" />
                   <div>
                     <div className="font-medium">{t('contact.direct.email_label')}</div>
-                    <div className="text-sm text-muted-foreground">shai@spzrealestate.com</div>
+                    <div className="text-sm text-muted-foreground">shai@sfez-nadlan.com</div>
                   </div>
                 </div>
                 
