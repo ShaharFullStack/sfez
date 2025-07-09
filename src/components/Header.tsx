@@ -92,7 +92,7 @@ const Navigation = memo(({ t, isMobile = false, onLinkClick }: NavigationProps) 
     { href: '/services', key: 'nav.services', icon: <svg className="inline mr-1 mb-1 h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> },
     { href: '/about', key: 'nav.about', icon: <svg className="inline mr-1 mb-1 h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg> },
     { href: '/articles', key: 'nav.articles', icon: <svg className="inline mr-1 mb-1 h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 3v2"/><path d="M16 3v2"/></svg> },
-    { href: '/calculator', key: 'nav.calculator', icon: <svg className="inline mr-1 mb-1 h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/><path d="M15 3v18"/><path d="M3 9h18"/><path d="M3 15h18"/></svg> },
+    // { href: '/calculator', key: 'nav.calculator', icon: <svg className="inline mr-1 mb-1 h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/><path d="M15 3v18"/><path d="M3 9h18"/><path d="M3 15h18"/></svg> },
     { href: '/contact', key: 'nav.contact', icon: <svg className="inline mr-1 mb-1 h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 10.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v4.5"/><path d="M21 10.5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2"/><path d="M21 10.5V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7.5"/></svg> },
   ];
 
