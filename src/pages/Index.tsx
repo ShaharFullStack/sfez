@@ -156,22 +156,6 @@ const HomePage = () => {
           </div>
 
           <div className="max-w-6xl mx-auto space-y-16">
-            {/* Progress Bar */}
-            <div className="relative flex items-center justify-center mb-12">
-              <div className="absolute left-0 right-0 h-2 bg-primary/20 rounded-full" style={{ top: '50%' }}></div>
-              <div className="flex justify-between w-full max-w-3xl mx-auto z-10">
-                {[1, 2, 3].map((step) => (
-                  <div key={step} className="flex flex-col items-center">
-                    <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl border-4 border-white shadow-lg">
-                      {step}
-                    </div>
-                    <span className="mt-2 text-sm font-semibold text-primary">
-                      {t(`process.step${step}.title`)}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
 
             {/* Step 1 - Right */}
             <div className="flex justify-end items-center gap-8">
