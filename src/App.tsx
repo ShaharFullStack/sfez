@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from 'next-themes';
 import { LanguageProvider } from '@/contexts/LanguageContext';
 import WhatsAppBubble from '@/components/WhatsAppBubble';
+import AccessibilityWidget from '@/components/EnableBubble';
 import Index from "./pages/Index";
 import Properties from "./pages/Properties";
 import Services from "./pages/Services";
@@ -14,6 +15,7 @@ import Blog from "./pages/Blog";
 import Calculator from "./pages/Calculator";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import { Calculator2 } from "./pages/Calculator_new";
 
 const queryClient = new QueryClient();
 
@@ -32,10 +34,12 @@ const App = () => (
               <Route path="/about" element={<About />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/calculator" element={<Calculator />} />
+              <Route path="/calculator2" element={<Calculator2 />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
             <WhatsAppBubble />
+            <AccessibilityWidget />
           </BrowserRouter>
         </TooltipProvider>
       </LanguageProvider>

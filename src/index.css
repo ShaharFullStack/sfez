@@ -376,7 +376,7 @@ html {
 
   /* Professional Links */
   .link-elegant {
-    @apply relative text-primary hover:text-primary-light transition-colors duration-300;
+    @apply relative text-primary text-lg p-2 hover:text-primary-light transition-colors duration-300;
   }
 
   .link-elegant::after {
@@ -486,4 +486,20 @@ html {
   90% {
     transform: translate3d(0, -2px, 0);
   }
+}
+
+/* נגישות: שינוי גודל פונט רק לטקסטים קטנים */
+accessibility-font-resize p,
+accessibility-font-resize span,
+accessibility-font-resize li,
+accessibility-font-resize a,
+accessibility-font-resize label,
+accessibility-font-resize button,
+accessibility-font-resize input,
+accessibility-font-resize textarea,
+accessibility-font-resize td,
+accessibility-font-resize th,
+accessibility-font-resize small,
+accessibility-font-resize .small-text {
+  font-size: var(--accessibility-font-size) !important;
 }

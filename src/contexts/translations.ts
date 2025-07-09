@@ -1,5 +1,49 @@
 export const translations = {
   he: {
+    // Accessibility Widget
+    'accessibility.title': 'תוסף נגישות',
+    'accessibility.open': 'פתח תוסף נגישות',
+    'accessibility.close': 'סגור תוסף נגישות',
+    'accessibility.minimize': 'מזער',
+    'accessibility.expand': 'הרחב',
+    'accessibility.reset': 'איפוס הגדרות',
+    'accessibility.reset_desc': 'החזר את כל ההגדרות למצב ברירת המחדל',
+    
+    // Font Size
+    'accessibility.font_size': 'גודל טקסט',
+    'accessibility.font_increase': 'הגדל טקסט',
+    'accessibility.font_decrease': 'הקטן טקסט',
+    
+    // Visual Settings
+    'accessibility.visual_settings': 'הגדרות תצוגה',
+    'accessibility.dark_mode': 'מצב כהה',
+    'accessibility.dark_mode_desc': 'החלף לצבעים כהים להפחתת עייפות עיניים',
+    'accessibility.high_contrast': 'ניגודיות גבוהה',
+    'accessibility.high_contrast_desc': 'הגבר את הניגודיות לקריאה טובה יותר',
+    'accessibility.highlight_links': 'הדגש קישורים',
+    'accessibility.highlight_links_desc': 'הדגש את כל הקישורים באתר',
+    
+    // Navigation & Interaction
+    'accessibility.navigation': 'ניווט ואינטראקציה',
+    'accessibility.big_cursor': 'סמן עכבר גדול',
+    'accessibility.big_cursor_desc': 'הגדל את סמן העכבר לראייה טובה יותר',
+    'accessibility.pause_animations': 'עצור אנימציות',
+    'accessibility.pause_animations_desc': 'עצור כל האנימציות באתר',
+    'accessibility.screen_reader': 'קורא מסך',
+    'accessibility.screen_reader_desc': 'הפעל תמיכה בקוראי מסך',
+    
+    // Footer
+    'accessibility.powered_by': 'מופעל על ידי Enable.co.il',
+    
+    // Status
+    'accessibility.enabled': 'מופעל',
+    'accessibility.disabled': 'מכובה',
+    // Gener al contact information
+    'contactInfo.name': 'שי ספז',
+    'contactInfo.sendMessage': 'הווצאפ שלנו',
+    'contactInfo.phone': '+972-50-123-4567',
+    'contactInfo.email': 'shai@sfez-nadlan.com',
+
     // Navigation
     'nav.home': 'בית',
     'nav.about': 'אודות',
@@ -12,7 +56,7 @@ export const translations = {
     'nav.theme': 'מצב כהה',
 
     // Hero Section
-    'hero.title': 'הנכס הנכון, ברגע הנכון, עם הליווי הנכון',
+    'hero.title': 'SFEZ - REAL ESTATE מגשימים לך בית עסקי חדש',
     'hero.subtitle': 'שי ספז - מתווך ויועץ נדל"ן עסקי עם עשור ניסיון',
     'hero.description': 'מומחים בהשכרה ומכירה של משרדים ושטחי מסחר עם תעודת אחריות אישית ללקוחות',
     'hero.cta.consultation': 'תאמו פגישת ייעוץ חינם',
@@ -22,10 +66,38 @@ export const translations = {
     'about.title': 'אודות שי ספז',
     'about.subtitle': 'מייסד ומנכ"ל - מתווך ויועץ נדל"ן עסקי',
     'about.description': 'עם עשור של ניסיון בתחום הנדל"ן העסקי, שי ספז הוא מומחה בליווי חברות ומשקיעים למצוא את הנכס הנכון. מאגר רחב של נכסים ורשת קשרים ענפה מבטיחים שירות מקצועי וייחודי.',
-    'about.experience': 'עשור ניסיון',
-    'about.deals': 'מאות עסקאות',
-    'about.guarantee': 'תעודת אחריות',
-    'about.donation': '5% תרומה',
+    'about.commercial_brokerage': 'תיווך נדל"ן מסחרי',
+    'about.commercial_brokerage.icon': 'Building2',
+    'about.investor_guidance': 'ליווי משקיעים',
+    'about.investor_guidance.icon': 'Briefcase',
+    'about.tenant_replacement': 'איתור שוכר חילופי',
+    'about.tenant_replacement.icon': 'RefreshCw',
+    'about.design_consultation': 'ליווי בתכנון ועיצוב',
+    'about.design_consultation.icon': 'Palette',
+    'about.needs_mapping': 'מיפוי צרכים ואיתור נכסים',
+    'about.needs_mapping.icon': 'Target',
+    'about.negotiation_management': 'ניהול מו"מ',
+    'about.negotiation_management.icon': 'Handshake',
+
+    // Company Specializations
+    'specializations.title': 'התמחויות החברה',
+    'specializations.commercial_brokerage': 'תיווך נדל"ן מסחרי',
+    'specializations.investor_guidance': 'ליווי משקיעים',
+    'specializations.tenant_replacement': 'איתור שוכר חילופי',
+    'specializations.design_consultation': 'ליווי לקוחות בתכנון, שיפוץ, עיצוב של הנכסים',
+    'specializations.needs_mapping': 'מיפוי הצרכים של הלקוח, ואיתור הנכס המתאים',
+    'specializations.negotiation_management': 'ניהול מו"מ',
+
+    // Common Business Scenarios
+    'scenarios.company_growth': 'החברה גדלה/קטנה?',
+    'scenarios.location_change': 'מחפשים אזור אחר?',
+    'scenarios.old_building': 'הבניין ישן עבורכם?',
+    'scenarios.cost_reduction': 'מחפשים להוזיל עלויות?',
+    'scenarios.recruitment_difficulty': 'המיקום מקשה על גיוס עובדים?',
+    'scenarios.investment_properties': 'מחפשים נכסים להשקעה?',
+    'scenarios.subletting': 'מחפשים שוכר משנה למשרד?',
+    'scenarios.office_search': 'מחפשים משרדים להשכרה / רכישה?',
+    'scenarios.commercial_spaces': 'שטחי מסחר עסקיים',
 
     // Services Section
     'services.title': 'השירותים שלנו',
@@ -151,6 +223,7 @@ export const translations = {
     'properties.area_unit': 'מ"ר',
     'properties.features.more': '+{count} נוספים',
     'properties.actions.call': 'התקשר',
+    'properties.actions.message': 'ווצאפ',
     'properties.actions.email': 'מייל',
     'properties.no_results': 'לא נמצאו נכסים התואמים לחיפוש',
     'properties.clear_filters': 'נקה סינון',
@@ -289,7 +362,7 @@ export const translations = {
     'about.page.subtitle': 'מומחים בנדל"ן עסקי, מחוייבים לערכים חברתיים ומקצועיות ללא פשרות.',
     'about.shai.title': 'שי ספז - מנכ"ל ומייסד',
     'about.shai.description': 'מתווך ויועץ נדל"ן עסקי עם ניסיון של עשור, מומחה בהשכרה ומכירה של משרדים ושטחי מסחר. שי מסייע לחברות ומשקיעים למצוא את הנכס הנכון תוך ליווי אישי 1:1, איפיון צרכים מדויק ואיתור נכסים ייחודיים.',
-    'about.shai.quote': '"הנכס הנכון, ברגע הנכון, עם הליווי הנכון"',
+    'about.shai.quote': '"אני לא מוכר נכסים, אני מתאים את הנכס שיוביל את העסק שלך להצלחה."',
     'about.shai.expertise.commercial': 'מומחה בנדל"ן עסקי ומסחרי',
     'about.shai.expertise.hitech': 'התמחות בחברות הייטק וסטארטאפים',
     'about.shai.expertise.warranty': 'תעודת אחריות אישית לכל לקוח',
@@ -321,7 +394,6 @@ export const translations = {
 
     'about.vision.title': 'החזון שלנו',
     'about.vision.description': 'להפוך לחברה משפחתית מצליחה הפועלת בהרמוניה ושיתוף פעולה, תוך מתן שירות מקצועי ללא פשרות ותרומה משמעותית לחברה הישראלית',
-    'about.vision.goal': 'יעד 2024: 17 מיליון ש"ח הכנסה שנתית',
 
     'about.timeline.title': 'המסע שלנו',
     'about.timeline.2014.title': 'הקמת החברה',
@@ -332,12 +404,20 @@ export const translations = {
     'about.timeline.2020.description': 'גיוס והכשרה של לוחמים ולוחמות משוחררים כחלק מהמחויבות החברתית',
     'about.timeline.2022.title': 'שיתוף עם יד אלקנה',
     'about.timeline.2022.description': 'תחילת התרומה החודשית לעמותת יד אלקנה לתמיכה בלוחמים',
-    'about.timeline.2024.title': 'יעד 17 מיליון',
-    'about.timeline.2024.description': 'קביעת יעד להגיע להכנסה שנתית של 17 מיליון ש"ח',
 
     'about.cta.title': 'בואו נכיר!',
     'about.cta.subtitle': 'מוכנים להיות חלק מהסיפור שלנו? בואו נדבר על איך נוכל לעזור לכם',
     'about.cta.button': '📞 קבעו פגישת היכרות',
+
+    // Process Section
+    'process.title': 'איך זה עובד',
+    'process.subtitle': 'שלושה שלבים פשוטים לנכס המושלם',
+    'process.step1.title': 'השלב הראשון – בניית פרופיל צרכים',
+    'process.step1.description': 'פגישת איפיון מתבצעת עם מתווך נדל״ן מומחה של החברה שיבין את הצרכים והדרישות שלכם, ויבנה את פרופיל הנכס הנדרש',
+    'process.step2.title': 'השלב השני – איתור הנכס',
+    'process.step2.description': 'איתור נכסים העונים להגדרות של פרופיל הנכס, תיאום פגישות בשטח, בחירת נכס מתאים, ניהול וסיוע במו״מ על ידי צוות החברה וסגירת עסקה',
+    'process.step3.title': 'השלב השלישי – תכנון והתאמות',
+    'process.step3.description': 'סיוע בתכנון והתאמות לנכס החדש, במידת הצורך נוכל לסייע בכל אנשי המקצוע אשר ידרשו להתאמות בנכס עבורכם',
 
     // Contact Section
     'contact.title': 'צור קשר',
@@ -409,7 +489,53 @@ export const translations = {
     'footer.rights': 'כל הזכויות שמורות',
     'footer.developed': 'פותח בגאווה על ידי',
   },
+// Add these translations to your existing translations.js file
+
   en: {
+    // Accessibility Widget
+    'accessibility.title': 'Accessibility Widget',
+    'accessibility.open': 'Open accessibility widget',
+    'accessibility.close': 'Close accessibility widget',
+    'accessibility.minimize': 'Minimize',
+    'accessibility.expand': 'Expand',
+    'accessibility.reset': 'Reset Settings',
+    'accessibility.reset_desc': 'Reset all settings to default',
+    
+    // Font Size
+    'accessibility.font_size': 'Text Size',
+    'accessibility.font_increase': 'Increase text size',
+    'accessibility.font_decrease': 'Decrease text size',
+    
+    // Visual Settings
+    'accessibility.visual_settings': 'Display Settings',
+    'accessibility.dark_mode': 'Dark Mode',
+    'accessibility.dark_mode_desc': 'Switch to dark colors to reduce eye strain',
+    'accessibility.high_contrast': 'High Contrast',
+    'accessibility.high_contrast_desc': 'Increase contrast for better readability',
+    'accessibility.highlight_links': 'Highlight Links',
+    'accessibility.highlight_links_desc': 'Highlight all links on the page',
+    
+    // Navigation & Interaction
+    'accessibility.navigation': 'Navigation & Interaction',
+    'accessibility.big_cursor': 'Big Cursor',
+    'accessibility.big_cursor_desc': 'Increase cursor size for better visibility',
+    'accessibility.pause_animations': 'Pause Animations',
+    'accessibility.pause_animations_desc': 'Stop all animations on the page',
+    'accessibility.screen_reader': 'Screen Reader',
+    'accessibility.screen_reader_desc': 'Enable screen reader support',
+    
+    // Footer
+    'accessibility.powered_by': 'Powered by Enable.co.il',
+    
+    // Status
+    'accessibility.enabled': 'Enabled',
+    'accessibility.disabled': 'Disabled',
+
+    // Additional Accessibility Features
+    'contactInfo.name': 'Shai Sfez',
+    'contactInfo.phone': '+972-50-123-4567',
+    'contactInfo.email': 'shai@sfez-nadlan.com',
+
     // Navigation
     'nav.home': 'Home',
     'nav.about': 'About',
@@ -422,7 +548,7 @@ export const translations = {
     'nav.theme': 'Dark Mode',
 
     // Hero Section
-    'hero.title': 'The Right Property, The Right Time, The Right Agency',
+    'hero.title': 'SFEZ - REAL ESTATE Fulfilling Your New Business Home',
     'hero.subtitle': 'Shai Sfez - Commercial Real Estate Broker & Consultant with a Decade of Experience',
     'hero.description': 'Specializing in office and retail space rental and sales with personal guarantee certificate for clients',
     'hero.cta.consultation': 'Schedule Free Consultation',
@@ -432,10 +558,38 @@ export const translations = {
     'about.title': 'About Shai Sfez',
     'about.subtitle': 'Founder & CEO - Commercial Real Estate Broker & Consultant',
     'about.description': 'With a decade of experience in commercial real estate, Shai Sfez specializes in helping companies and investors find the right property. Extensive property database and strong network ensure professional and unique service.',
-    'about.experience': 'Decade Experience',
-    'about.deals': 'Hundreds of Deals',
-    'about.guarantee': 'Personal Guarantee',
-    'about.donation': '5% Donation',
+    'about.commercial_brokerage': 'Commercial Real Estate Brokerage',
+    'about.commercial_brokerage.icon': 'Building2',
+    'about.investor_guidance': 'Investor Guidance',
+    'about.investor_guidance.icon': 'Briefcase',
+    'about.tenant_replacement': 'Tenant Replacement',
+    'about.tenant_replacement.icon': 'RefreshCw',
+    'about.design_consultation': 'Design & Planning Consultation',
+    'about.design_consultation.icon': 'Palette',
+    'about.needs_mapping': 'Needs Mapping & Property Matching',
+    'about.needs_mapping.icon': 'Target',
+    'about.negotiation_management': 'Negotiation Management',
+    'about.negotiation_management.icon': 'Handshake',
+
+    // Company Specializations
+    'specializations.title': 'Our Specializations',
+    'specializations.commercial_brokerage': 'Commercial Real Estate Brokerage',
+    'specializations.investor_guidance': 'Investor Guidance',
+    'specializations.tenant_replacement': 'Tenant Replacement',
+    'specializations.design_consultation': 'Design, Renovation, and Styling Consultation',
+    'specializations.needs_mapping': 'Client Needs Mapping and Property Matching',
+    'specializations.negotiation_management': 'Negotiation Management',
+
+    // Common Business Scenarios
+    'scenarios.company_growth': 'Company Growing/Shrinking?',
+    'scenarios.location_change': 'Looking for a Different Area?',
+    'scenarios.old_building': 'Is the Building Too Old for You?',
+    'scenarios.cost_reduction': 'Looking to Reduce Costs?',
+    'scenarios.recruitment_difficulty': 'Does Location Make Employee Recruitment Difficult?',
+    'scenarios.investment_properties': 'Looking for Investment Properties?',
+    'scenarios.subletting': 'Looking for Office Subletting?',
+    'scenarios.office_search': 'Looking for Offices to Rent/Purchase?',
+    'scenarios.commercial_spaces': 'Commercial Business Spaces',
 
     // Services Section
     'services.title': 'Our Services',
@@ -562,6 +716,7 @@ export const translations = {
     'properties.area_unit': 'sqm',
     'properties.features.more': '+{count} more',
     'properties.actions.call': 'Call',
+    'properties.actions.message': 'WhatsApp',
     'properties.actions.email': 'Email',
     'properties.no_results': 'No properties found matching your search',
     'properties.clear_filters': 'Clear Filters',
@@ -700,7 +855,7 @@ export const translations = {
     'about.page.subtitle': 'Commercial real estate experts, committed to social values and uncompromising professionalism.',
     'about.shai.title': 'Shai Sfez - CEO & Founder',
     'about.shai.description': 'Commercial real estate broker and consultant with a decade of experience, specializing in office and retail space rental and sales. Shai helps companies and investors find the right property with personal 1:1 guidance, precise needs assessment, and unique property sourcing.',
-    'about.shai.quote': '"The Right Property, The Right Time, The Right Guidance"',
+    'about.shai.quote': '"I tailor the perfect space to ensure your business thrives."',
     'about.shai.expertise.commercial': 'Expert in commercial and business real estate',
     'about.shai.expertise.hitech': 'Specialization in hi-tech companies and startups',
     'about.shai.expertise.warranty': 'Personal guarantee certificate for every client',
@@ -732,23 +887,19 @@ export const translations = {
 
     'about.vision.title': 'Our Vision',
     'about.vision.description': 'To become a successful family business operating in harmony and cooperation, while providing uncompromising professional service and meaningful contribution to Israeli society',
-    'about.vision.goal': '2024 Goal: 17 million ILS annual revenue',
-
-    'about.timeline.title': 'Our Journey',
-    'about.timeline.2014.title': 'Company Foundation',
-    'about.timeline.2014.description': 'Shai Sfez founded Sfez Real Estate with a vision to transform the commercial real estate industry',
-    'about.timeline.2017.title': 'Hi-Tech Specialization',
-    'about.timeline.2017.description': 'Development of unique expertise in real estate for hi-tech companies and startups',
-    'about.timeline.2020.title': 'Team Expansion',
-    'about.timeline.2020.description': 'Recruitment and training of discharged veterans as part of social commitment',
-    'about.timeline.2022.title': 'Partnership with Yad Elkana',
-    'about.timeline.2022.description': 'Beginning of monthly donations to Yad Elkana association for veteran support',
-    'about.timeline.2024.title': '17 Million Goal',
-    'about.timeline.2024.description': 'Setting goal to reach 17 million ILS annual revenue',
-
     'about.cta.title': 'Let\'s Get Acquainted!',
     'about.cta.subtitle': 'Ready to be part of our story? Let\'s talk about how we can help you',
     'about.cta.button': '📞 Schedule a Meeting',
+
+    // Process Section
+    'process.title': 'How It Works',
+    'process.subtitle': 'Three simple steps to the perfect property',
+    'process.step1.title': 'Step One – Building a Requirements Profile',
+    'process.step1.description': 'A characterization meeting takes place with an expert real estate broker from the company who will understand your needs and requirements, and build the required property profile',
+    'process.step2.title': 'Step Two – Property Location',
+    'process.step2.description': 'Locating properties that meet the property profile definitions, coordinating field meetings, selecting suitable properties, managing and assisting in negotiations by the company team and closing the deal',
+    'process.step3.title': 'Step Three – Planning and Adaptations',
+    'process.step3.description': 'Assistance in planning and adaptations for the new property, if needed we can assist with all professionals who will be required for property adaptations for you',
 
     // Contact Section
     'contact.title': 'Contact Us',

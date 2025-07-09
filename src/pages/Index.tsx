@@ -1,6 +1,7 @@
 import { Header } from '@/components/Header';
 import { useLanguage } from '@/contexts/useLanguage';
 import { Button } from '@/components/ui/button';
+import { Building2, Briefcase, RefreshCw, Palette, Target, Handshake } from 'lucide-react';
 
 const HomePage = () => {
   const { t } = useLanguage();
@@ -22,6 +23,21 @@ const HomePage = () => {
 
   const handleContactClick = () => {
     window.open(whatsappUrl, '_blank');
+  };
+
+  // Helper function to get the appropriate icon component
+  const getIcon = (iconName: string) => {
+    const iconMap = {
+      'Building2': Building2,
+      'Briefcase': Briefcase,
+      'RefreshCw': RefreshCw,
+      'Palette': Palette,
+      'Target': Target,
+      'Handshake': Handshake,
+    };
+
+    const IconComponent = iconMap[iconName as keyof typeof iconMap];
+    return IconComponent ? <IconComponent className="w-8 h-8 text-primary" /> : null;
   };
 
   return (
@@ -102,22 +118,101 @@ const HomePage = () => {
             <p className="text-base sm:text-lg max-w-3xl mx-auto">{t('about.description')}</p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
             <div className="card-elegant text-center">
-              <div className="text-3xl font-bold text-gradient-primary mb-2">10+</div>
-              <p className="text-sm font-medium">{t('about.experience')}</p>
+              <div className="mb-3 flex justify-center">{getIcon(t('about.commercial_brokerage.icon'))}</div>
+              <p className="text-sm font-medium">{t('about.commercial_brokerage')}</p>
             </div>
             <div className="card-elegant text-center">
-              <div className="text-3xl font-bold text-gradient-primary mb-2">500+</div>
-              <p className="text-sm font-medium">{t('about.deals')}</p>
+              <div className="mb-3 flex justify-center">{getIcon(t('about.investor_guidance.icon'))}</div>
+              <p className="text-sm font-medium">{t('about.investor_guidance')}</p>
             </div>
             <div className="card-elegant text-center">
-              <div className="text-3xl font-bold text-gradient-accent mb-2">100%</div>
-              <p className="text-sm font-medium">{t('about.guarantee')}</p>
+              <div className="mb-3 flex justify-center">{getIcon(t('about.tenant_replacement.icon'))}</div>
+              <p className="text-sm font-medium">{t('about.tenant_replacement')}</p>
             </div>
             <div className="card-elegant text-center">
-              <div className="text-3xl font-bold text-gradient-accent mb-2">5%</div>
-              <p className="text-sm font-medium">{t('about.donation')}</p>
+              <div className="mb-3 flex justify-center">{getIcon(t('about.design_consultation.icon'))}</div>
+              <p className="text-sm font-medium">{t('about.design_consultation')}</p>
+            </div>
+            <div className="card-elegant text-center">
+              <div className="mb-3 flex justify-center">{getIcon(t('about.needs_mapping.icon'))}</div>
+              <p className="text-sm font-medium">{t('about.needs_mapping')}</p>
+            </div>
+            <div className="card-elegant text-center">
+              <div className="mb-3 flex justify-center">{getIcon(t('about.negotiation_management.icon'))}</div>
+              <p className="text-sm font-medium">{t('about.negotiation_management')}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section id="process" className="py-16 sm:py-20 bg-background">
+        <div className="container mx-auto px-2 sm:px-4">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gradient-primary">{t('process.title')}</h2>
+            <p className="text-lg sm:text-xl text-muted-foreground mb-8 sm:mb-12">{t('process.subtitle')}</p>
+          </div>
+
+          <div className="max-w-6xl mx-auto space-y-16">
+            {/* Progress Bar */}
+            <div className="relative flex items-center justify-center mb-12">
+              <div className="absolute left-0 right-0 h-2 bg-primary/20 rounded-full" style={{ top: '50%' }}></div>
+              <div className="flex justify-between w-full max-w-3xl mx-auto z-10">
+                {[1, 2, 3].map((step) => (
+                  <div key={step} className="flex flex-col items-center">
+                    <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl border-4 border-white shadow-lg">
+                      {step}
+                    </div>
+                    <span className="mt-2 text-sm font-semibold text-primary">
+                      {t(`process.step${step}.title`)}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Step 1 - Right */}
+            <div className="flex justify-end items-center gap-8">
+              <div className="hidden md:block"></div>
+              <div className="card-elegant text-center max-w-md">
+                <div className="mb-6">
+                  <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-3xl font-bold text-primary">1</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-4 text-primary">{t('process.step1.title')}</h3>
+                  <p className="text-muted-foreground">{t('process.step1.description')}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 2 - Left */}
+            <div className="flex justify-start items-center gap-8">
+              <div className="card-elegant text-center max-w-md">
+                <div className="mb-6">
+                  <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-3xl font-bold text-primary">2</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-4 text-primary">{t('process.step2.title')}</h3>
+                  <p className="text-muted-foreground">{t('process.step2.description')}</p>
+                </div>
+              </div>
+              <div className="hidden md:block"></div>
+            </div>
+
+            {/* Step 3 - Right */}
+            <div className="flex justify-end items-center gap-8">
+              <div className="hidden md:block"></div>
+              <div className="card-elegant text-center max-w-md">
+                <div className="mb-6">
+                  <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-3xl font-bold text-primary">3</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-4 text-primary">{t('process.step3.title')}</h3>
+                  <p className="text-muted-foreground">{t('process.step3.description')}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

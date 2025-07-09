@@ -1,73 +1,192 @@
-# Welcome to your Lovable project
+# SFEZ - REAL ESTATE
 
-## Project info
+אתר עסקי מקצועי עבור שי ספז - מתווך ויועץ נדל"ן עסקי עם עשור ניסיון בתחום.
 
-**URL**: https://lovable.dev/projects/e510e00d-c181-48dc-bacf-6e3a94bd0092
+## תיאור הפרויקט
 
-## How can I edit this code?
+אתר תדמיתי ומקצועי המיועד לחברת SFEZ REAL ESTATE, מומחה בתיווך נדל"ן עסקי. האתר בנוי בטכנולוגיות מתקדמות ומותאם לשוק הישראלי עם תמיכה מלאה בשפה העברית.
 
-There are several ways of editing your application.
+## 🎯 תכונות עיקריות
 
-**Use Lovable**
+### 📱 עיצוב רספונסיבי
+- מותאם לכל המכשירים (דסקטופ, טאבלט, מובייל)
+- חווית משתמש מודרנית ואינטואיטיבית
+- עיצוב אלגנטי עם אפקטי זכוכית (glass effects)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/e510e00d-c181-48dc-bacf-6e3a94bd0092) and start prompting.
+### 🌐 תמיכה רב-לשונית
+- **עברית** - שפה עיקרית
+- **אנגלית** - עבור לקוחות בינלאומיים
+- מעבר חלק בין השפות עם שמירת הקונטקסט
 
-Changes made via Lovable will be committed automatically to this repo.
+### 🎬 סרטון HERO SECTION מותאם אישית
+- סרטון תדמיתי מותאם אישית לעסק (`/videos/SfezHero.mp4`)
+- רקע וידאו מלא עם overlay אפקטיבי
+- טעינה אוטומטית עם לולאה רציפה
+- מותאם לכל גדלי מסך
 
-**Use your preferred IDE**
+## 🚀 יכולות מיוחדות
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### אינטגרציה עם וואטסאפ
+- לחצן צף וואטסאפ בכל הדפים
+- קישורים ישירים להתקשרות
+- הודעות מובנות מראש
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### אופטימיזציה לביצועים
+- טעינה חכמה של תמונות
+- קוד מפוצל (Code Splitting)
+- מיסוך וקומפרסיה של assets
 
-Follow these steps:
+### נגישות
+- תמיכה בקוראי מסך
+- ניווט מקלדת
+- ניגודיות צבעים תקנית
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### 📄 דפי האתר
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+#### 🏠 עמוד הבית (Home)
+- Hero section עם סרטון תדמיתי
+- מידע על שי ספז והחברה
+- תהליך העבודה בשלושה שלבים
+- קריאות לפעולה (CTA) להתקשרות ווואטסאפ
 
-# Step 3: Install the necessary dependencies.
-npm i
+#### 👤 עמוד אודות (About)
+- סיפור החברה וחזון העסק
+- התמחויות והשירותים
+- מטרות עסקיות ויעדים
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+#### 🏢 עמוד שירותים (Services)
+- השכרת משרדים
+- מכירת משרדים
+- השכרת שטחי מסחר
+- מכירת שטחי מסחר
+- בניינים שלמים
+
+#### 🏗️ עמוד נכסים (Properties)
+- מאגר נכסים זמינים
+- סינון מתקדם לפי סוג, מחיר, מיקום
+- חיפוש טקסט חופשי
+- פרטי נכסים מפורטים
+
+#### 📝 עמוד המאמרים (Articles)
+- מאמרים מקצועיים בתחום הנדל"ן
+- עדכונים בשוק הנדל"ן העסקי
+- טיפים וייעוץ מקצועי
+- חיפוש וסינון מאמרים
+
+#### 📞 עמוד יצירת קשר (Contact)
+- טופס יצירת קשר מפורט
+- פרטי התקשרות ישירה
+- אינטגרציה עם וואטסאפ
+- מפה ומיקום המשרד
+
+## 🛠️ טכנולוגיות בשימוש
+
+### Frontend Framework
+- **React 18** - ספרייה מתקדמת לבניית ממשק משתמש
+- **TypeScript** - פיתוח מאובטח עם בדיקות סוג
+- **Vite** - כלי build מהיר ומודרני
+
+### Styling & UI
+- **Tailwind CSS** - framework CSS מותאם אישית
+- **Shadcn/UI** - רכיבי UI מקצועיים
+- **Lucide React** - אייקונים מודרניים
+- **CSS Custom Properties** - משתני צבע דינמיים
+
+### State Management
+- **React Context API** - ניהול מצב גלובלי
+- **Custom Hooks** - לוגיקה נשמרת
+
+### Features
+- **Responsive Design** - תמיכה בכל גדלי מסך
+- **Dark/Light Mode** - מצב כהה ובהיר
+- **Accessibility** - נגישות מלאה
+- **SEO Optimized** - מותאם למנועי חיפוש
+
+## 🗂️ מבנה הפרויקט
+
+```
+src/
+├── components/          # רכיבי UI כלליים
+│   ├── ui/             # רכיבי Shadcn/UI
+│   ├── Header.tsx      # כותרת האתר
+│   ├── ContactButton.tsx
+│   └── WhatsAppBubble.tsx
+├── contexts/           # ניהול מצב גלובלי
+│   ├── LanguageContext.tsx
+│   ├── translations.ts
+│   └── useLanguage.ts
+├── hooks/              # Custom hooks
+├── lib/                # כלי עזר
+├── pages/              # דפי האתר
+│   ├── Index.tsx       # עמוד הבית
+│   ├── About.tsx       # עמוד אודות
+│   ├── Services.tsx    # עמוד שירותים
+│   ├── Properties.tsx  # עמוד נכסים
+│   ├── Blog.tsx        # עמוד המאמרים
+│   └── Contact.tsx     # עמוד יצירת קשר
+├── types/              # הגדרות TypeScript
+└── assets/             # קבצי מדיה
 ```
 
-**Edit a file directly in GitHub**
+## 📦 התקנה והפעלה
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### דרישות מערכת
+- Node.js (גרסה 18 ומעלה)
+- npm או yarn
+- Git
 
-**Use GitHub Codespaces**
+### התקנה
+```bash
+# שכפול הפרויקט
+git clone [repository-url]
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+# כניסה לתיקיית הפרויקט
+cd sfez
 
-## What technologies are used for this project?
+# התקנת dependencies
+npm install
 
-This project is built with:
+# הפעלה במצב פיתוח
+npm run dev
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+# build לפרודקשן
+npm run build
+```
 
-## How can I deploy this project?
+## 🎨 עיצוב ונושא
 
-Simply open [Lovable](https://lovable.dev/projects/e510e00d-c181-48dc-bacf-6e3a94bd0092) and click on Share -> Publish.
+### פלטת צבעים
+- **Primary**: כחול מקצועי
+- **Secondary**: אפור מודרני
+- **Accent**: זהב לטוקביים
+- **Background**: לבן/כהה (לפי מצב)
 
-## Can I connect a custom domain to my Lovable project?
+### טיפוגרפיה
+- פונטים עבריים וטיפוגרפיה מותאמת
+- גדלי טקסט רספונסיביים
+- קריאות מועטלת בכל הרזולוציות
 
-Yes, you can!
+## 📱 תמיכה במכשירים
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- **Desktop**: 1920px ומעלה
+- **Laptop**: 1024px-1919px
+- **Tablet**: 768px-1023px
+- **Mobile**: 320px-767px
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 🔧 קבצי הגדרה
+
+- `tailwind.config.ts` - הגדרות Tailwind CSS
+- `tsconfig.json` - הגדרות TypeScript
+- `vite.config.ts` - הגדרות Vite
+- `components.json` - הגדרות Shadcn/UI
+
+## 📈 מטרות עסקיות
+
+האתר נבנה במטרה לתמוך ביעדים העסקיים של החברה:
+- הגדלת מספר הלידים
+- חיזוק המותג והתדמית המקצועית
+- הרחבת הנוכחות הדיגיטלית
+- שיפור חווית הלקוח
+
+**פותח בגאווה עבור SFEZ REAL ESTATE**  
+*שי ספז - מתווך ויועץ נדל"ן עסקי*
