@@ -97,16 +97,14 @@ const Navigation = memo(({ t, isMobile = false, onLinkClick }: NavigationProps) 
   ];
 
   const handleLinkClick = useCallback((e) => {
-    if (onLinkClick) {
-      onLinkClick();
-    }
-    // Add smooth scrolling for same-page navigation
     const href = e.currentTarget.getAttribute('href');
-    if (href.startsWith('#')) {
+    if (href && href.startsWith('#')) {
       e.preventDefault();
       const element = document.querySelector(href);
       element?.scrollIntoView({ behavior: 'smooth' });
+      if (onLinkClick) onLinkClick();
     }
+    // For normal links, let the browser handle navigation and do not call onLinkClick
   }, [onLinkClick]);
 
   // Detect current path for active link styling
@@ -270,9 +268,10 @@ export const Header = memo(() => {
           id="mobile-menu"
           className={`md:hidden transition-all duration-300 ease-in-out ${
             isMenuOpen 
-              ? 'max-h-96 opacity-100 py-4 border-t border-border' 
-              : 'max-h-0 opacity-0 overflow-hidden'
+              ? 'max-h-96 opacity-100 py-4 border-t border-border z-50' 
+              : 'max-h-0 opacity-0 overflow-hidden z-50'
           }`}
+          style={{ position: 'relative', zIndex: 50 }}
           aria-hidden={!isMenuOpen}
         >
           <Navigation t={t} isMobile={true} onLinkClick={closeMobileMenu} />
