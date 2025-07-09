@@ -140,6 +140,12 @@
     font-family: 'Abhaya Libre', 'Libre Franklin', serif;
   }
 
+  /* Make paragraph text more readable */
+  p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+  }
+
   /* Hebrew Text Support */
   [dir="rtl"] {
     font-family: 'Abhaya Libre', 'Libre Franklin', serif;

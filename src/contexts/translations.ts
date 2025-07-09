@@ -393,21 +393,11 @@ export const translations = {
     'about.achievements.charity.description': 'מהרווחים לתמיכה בלוחמים',
 
     'about.vision.title': 'החזון שלנו',
-    'about.vision.description': 'להפוך לחברה משפחתית מצליחה הפועלת בהרמוניה ושיתוף פעולה, תוך מתן שירות מקצועי ללא פשרות ותרומה משמעותית לחברה הישראלית',
-
-    'about.timeline.title': 'המסע שלנו',
-    'about.timeline.2014.title': 'הקמת החברה',
-    'about.timeline.2014.description': 'שי ספז הקים את ספז נדל"ן עם חזון לשנות את תחום הנדל"ן העסקי',
-    'about.timeline.2017.title': 'התמחות בהייטק',
-    'about.timeline.2017.description': 'פיתוח מומחיות ייחודית בנדל"ן עבור חברות הייטק וסטארטאפים',
-    'about.timeline.2020.title': 'הרחבת הצוות',
-    'about.timeline.2020.description': 'גיוס והכשרה של לוחמים ולוחמות משוחררים כחלק מהמחויבות החברתית',
-    'about.timeline.2022.title': 'שיתוף עם יד אלקנה',
-    'about.timeline.2022.description': 'תחילת התרומה החודשית לעמותת יד אלקנה לתמיכה בלוחמים',
-
+    'about.vision.description': 'חברה הפועלת בהרמוניה ושיתוף פעולה, תוך מתן שירות מקצועי ללא פשרות ותרומה משמעותית לחברה הישראלית',
+    'about.vision.values': 'ערכים של מקצועיות, שקיפות, אמינות ותרומה חברתית',
     'about.cta.title': 'בואו נכיר!',
     'about.cta.subtitle': 'מוכנים להיות חלק מהסיפור שלנו? בואו נדבר על איך נוכל לעזור לכם',
-    'about.cta.button': '📞 קבעו פגישת היכרות',
+    'about.cta.button': ' קבעו פגישת היכרות',
 
     // Process Section
     'process.title': 'איך זה עובד',
@@ -886,10 +876,10 @@ export const translations = {
     'about.achievements.charity.description': 'Of profits to support veterans',
 
     'about.vision.title': 'Our Vision',
-    'about.vision.description': 'To become a successful family business operating in harmony and cooperation, while providing uncompromising professional service and meaningful contribution to Israeli society',
+    'about.vision.description': 'A successful business operating in harmony and cooperation, while providing uncompromising professional service and meaningful contribution to Israeli society',
     'about.cta.title': 'Let\'s Get Acquainted!',
     'about.cta.subtitle': 'Ready to be part of our story? Let\'s talk about how we can help you',
-    'about.cta.button': '📞 Schedule a Meeting',
+    'about.cta.button': ' Schedule a Meeting ',
 
     // Process Section
     'process.title': 'How It Works',
