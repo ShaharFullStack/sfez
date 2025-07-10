@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Header } from '@/components/Header';
 import { Button } from '@/components/ui/button';
@@ -23,7 +23,7 @@ const NotFound = () => {
           <p className="text-2xl text-muted-foreground mb-4">הדף שחיפשת לא נמצא</p>
           <p className="text-lg text-muted-foreground mb-8">יכול להיות שהקישור שגוי או שהדף הוסר</p>
           <Button asChild className="btn-primary">
-            <a href="/">חזור לעמוד הבית</a>
+            <Link to="/">חזור לעמוד הבית</Link>
           </Button>
         </div>
       </div>

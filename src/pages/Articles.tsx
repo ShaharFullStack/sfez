@@ -6,13 +6,52 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Calendar, User, Search, TrendingUp, Building, DollarSign, Users } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { useToast } from '@/hooks/use-toast';
+import { Calendar, User, Search, TrendingUp, Building, DollarSign, Users, X, Loader2 } from 'lucide-react';
 import type { ArticlePost } from '@/types';
 
 function Articles() {
     const { t } = useLanguage();
+    const { toast } = useToast();
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('all');
+    const [newsletterEmail, setNewsletterEmail] = useState('');
+    const [isSubscribing, setIsSubscribing] = useState(false);
+
+    const handleNewsletterSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        
+        if (!newsletterEmail || !newsletterEmail.includes('@')) {
+            toast({
+                title: 'שגיאה',
+                description: 'אנא הזן כתובת אימייל תקינה',
+                variant: 'destructive'
+            });
+            return;
+        }
+
+        setIsSubscribing(true);
+        try {
+            // Simulate API call
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            toast({
+                title: 'הרשמה הושלמה!',
+                description: 'נרשמת בהצלחה לניוזלטר שלנו',
+            });
+            
+            setNewsletterEmail('');
+        } catch (error) {
+            toast({
+                title: 'שגיאה',
+                description: 'אירעה שגיאה בהרשמה. אנא נסה שוב.',
+                variant: 'destructive'
+            });
+        } finally {
+            setIsSubscribing(false);
+        }
+    };
 
     const mockArticlePosts = useMemo(() => [
         {
@@ -198,7 +237,39 @@ image:'/images/article4.png',
                                             ))}
                                         </div>
                                     </div>
-                                    <Button className="btn-primary w-full">{t('articles.read_more')}</Button>
+                                    <Dialog>
+                                        <DialogTrigger asChild>
+                                            <Button className="btn-primary w-full">{t('articles.read_more')}</Button>
+                                        </DialogTrigger>
+                                        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+                                            <DialogHeader>
+                                                <DialogTitle className="text-2xl font-bold text-right">{filteredPosts[0].title}</DialogTitle>
+                                            </DialogHeader>
+                                            <div className="space-y-4">
+                                                <img src={filteredPosts[0].image} alt={filteredPosts[0].title} className="w-full h-64 object-cover rounded-lg" />
+                                                <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                                                    <div className="flex items-center gap-1">
+                                                        <User className="h-4 w-4" />
+                                                        <span>{filteredPosts[0].author}</span>
+                                                    </div>
+                                                    <div className="flex items-center gap-1">
+                                                        <Calendar className="h-4 w-4" />
+                                                        <span>{filteredPosts[0].createdAt.toLocaleDateString('he-IL')}</span>
+                                                    </div>
+                                                </div>
+                                                <div className="flex flex-wrap gap-2 mb-4">
+                                                    {filteredPosts[0].tags.map((tag, index) => (
+                                                        <Badge key={index} variant="secondary" className="text-xs">
+                                                            {tag}
+                                                        </Badge>
+                                                    ))}
+                                                </div>
+                                                <div className="prose max-w-none text-right" dir="rtl">
+                                                    <p className="text-lg leading-relaxed">{filteredPosts[0].content}</p>
+                                                </div>
+                                            </div>
+                                        </DialogContent>
+                                    </Dialog>
                                 </div>
                             </div>
                         </Card>
@@ -244,7 +315,39 @@ image:'/images/article4.png',
                                             </Badge>
                                         )}
                                     </div>
-                                    <Button className="btn-primary w-full">{t('articles.read_more')}</Button>
+                                    <Dialog>
+                                        <DialogTrigger asChild>
+                                            <Button className="btn-primary w-full">{t('articles.read_more')}</Button>
+                                        </DialogTrigger>
+                                        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+                                            <DialogHeader>
+                                                <DialogTitle className="text-2xl font-bold text-right">{post.title}</DialogTitle>
+                                            </DialogHeader>
+                                            <div className="space-y-4">
+                                                <img src={post.image} alt={post.title} className="w-full h-64 object-cover rounded-lg" />
+                                                <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                                                    <div className="flex items-center gap-1">
+                                                        <User className="h-4 w-4" />
+                                                        <span>{post.author}</span>
+                                                    </div>
+                                                    <div className="flex items-center gap-1">
+                                                        <Calendar className="h-4 w-4" />
+                                                        <span>{post.createdAt.toLocaleDateString('he-IL')}</span>
+                                                    </div>
+                                                </div>
+                                                <div className="flex flex-wrap gap-2 mb-4">
+                                                    {post.tags.map((tag, index) => (
+                                                        <Badge key={index} variant="secondary" className="text-xs">
+                                                            {tag}
+                                                        </Badge>
+                                                    ))}
+                                                </div>
+                                                <div className="prose max-w-none text-right" dir="rtl">
+                                                    <p className="text-lg leading-relaxed">{post.content}</p>
+                                                </div>
+                                            </div>
+                                        </DialogContent>
+                                    </Dialog>
                                 </CardContent>
                             </Card>
                         ))}
@@ -273,10 +376,28 @@ image:'/images/article4.png',
                         <p className="text-muted-foreground mb-6">
                             {t('articles.newsletter.subtitle')}
                         </p>
-                        <div className="flex gap-4 max-w-md mx-auto">
-                            <Input placeholder={t('articles.newsletter.placeholder')} className="flex-1" />
-                            <Button className="btn-accent">{t('articles.newsletter.submit')}</Button>
-                        </div>
+                        <form onSubmit={handleNewsletterSubmit} className="flex gap-4 max-w-md mx-auto">
+                            <Input 
+                                type="email"
+                                value={newsletterEmail}
+                                onChange={(e) => setNewsletterEmail(e.target.value)}
+                                placeholder={t('articles.newsletter.placeholder')} 
+                                className="flex-1" 
+                                required
+                                disabled={isSubscribing}
+                            />
+                            <Button 
+                                type="submit" 
+                                className="btn-accent"
+                                disabled={isSubscribing}
+                            >
+                                {isSubscribing ? (
+                                    <Loader2 className="h-4 w-4 animate-spin" />
+                                ) : (
+                                    t('articles.newsletter.submit')
+                                )}
+                            </Button>
+                        </form>
                     </div>
                 </div>
             </div>

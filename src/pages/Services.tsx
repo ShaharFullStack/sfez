@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../co
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import { Dialog, DialogContent, DialogTrigger } from '../components/ui/dialog';
-import { Building, Store, Home, Shield, Users, Calculator, CheckCircle, AlertTriangle, Target } from 'lucide-react';
+import { Building, Store, Home, Shield, Users, CheckCircle, AlertTriangle, Target } from 'lucide-react';
 import ContactButton from '@/components/ContactButton';
 import { useState } from 'react';
 
@@ -191,7 +191,6 @@ export default function Services() {
                         {service.description}
                       </CardDescription>
                       <Badge variant="outline" className="text-base font-medium">
-                        <Calculator className="h-4 w-4 mr-1" />
                         {service.price}
                       </Badge>
                     </div>
@@ -283,9 +282,6 @@ export default function Services() {
                 >
                   {t('services.cta.contact')}
                 </ContactButton>
-                <Button size="lg" variant="outline" className="btn-glass text-xl">
-                  {t('services.cta.calculator')}
-                </Button>
               </div>
             </div>
           </div>

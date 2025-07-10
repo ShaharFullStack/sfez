@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
 import { useLanguage } from '@/contexts/useLanguage';
 import { Header } from '@/components/Header';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -8,37 +11,36 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
-import { Phone, Mail, MapPin, Clock, Building, Send, Shield, Users } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Building, Send, Shield, Users, Loader2 } from 'lucide-react';
 import ContactButton from '@/components/ContactButton';
+
+// Form validation schema
+const formSchema = z.object({
+  name: z.string().min(2, { message: 'שם חייב להכיל לפחות 2 תווים' }),
+  email: z.string().email({ message: 'כתובת אימייל לא תקינה' }),
+  phone: z.string().min(10, { message: 'מספר טלפון חייב להכיל לפחות 10 ספרות' }),
+  company: z.string().optional(),
+  propertyType: z.string().min(1, { message: 'אנא בחר סוג נכס' }),
+  dealType: z.string().min(1, { message: 'אנא בחר סוג עסקה' }),
+  budget: z.string().optional(),
+  area: z.string().optional(),
+  location: z.string().optional(),
+  message: z.string().min(10, { message: 'הודעה חייבת להכיל לפחות 10 תווים' }),
+  urgency: z.string().optional()
+});
+
+type FormData = z.infer<typeof formSchema>;
 
 export default function Contact() {
   const { t } = useLanguage();
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    propertyType: '',
-    dealType: '',
-    budget: '',
-    area: '',
-    location: '',
-    message: '',
-    urgency: ''
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Here you would normally send the data to your backend
-    toast({
-      title: t('contact.success'),
-      description: "נחזור אליכם בתוך 24 שעות",
-    });
-    
-    // Reset form
-    setFormData({
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const form = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
       name: '',
       email: '',
       phone: '',
@@ -50,12 +52,32 @@ export default function Contact() {
       location: '',
       message: '',
       urgency: ''
-    });
+    }
+  });
+
+  const handleSubmit = async (data: FormData) => {
+    setIsSubmitting(true);
+    try {
+      // Here you would normally send the data to your backend
+      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API call
+      
+      toast({
+        title: t('contact.success'),
+        description: "נחזור אליכם בתוך 24 שעות",
+      });
+      
+      form.reset();
+    } catch (error) {
+      toast({
+        title: 'שגיאה',
+        description: 'אירעה שגיאה בשליחת הטופס. אנא נסה שוב.',
+        variant: 'destructive'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-  };
 
   return (
     <div className="min-h-screen">
@@ -96,146 +118,233 @@ export default function Contact() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
                   {/* Personal Details */}
                   <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="name">{t('contact.name')} *</Label>
-                      <Input
-                        id="name"
-                        required
-                        value={formData.name}
-                        onChange={(e) => handleInputChange('name', e.target.value)}
-                        placeholder={t('contact.placeholders.name')}
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="email">{t('contact.email')} *</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={(e) => handleInputChange('email', e.target.value)}
-                        placeholder={t('contact.placeholders.email')}
-                      />
-                    </div>
+                    <FormField
+                      control={form.control}
+                      name="name"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>{t('contact.name')} *</FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder={t('contact.placeholders.name')}
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>{t('contact.email')} *</FormLabel>
+                          <FormControl>
+                            <Input
+                              type="email"
+                              placeholder={t('contact.placeholders.email')}
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="phone">{t('contact.phone')} *</Label>
-                      <Input
-                        id="phone"
-                        required
-                        value={formData.phone}
-                        onChange={(e) => handleInputChange('phone', e.target.value)}
-                        placeholder={t('contact.placeholders.phone')}
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="company">{t('contact.company')}</Label>
-                      <Input
-                        id="company"
-                        value={formData.company}
-                        onChange={(e) => handleInputChange('company', e.target.value)}
-                        placeholder={t('contact.placeholders.company')}
-                      />
-                    </div>
+                    <FormField
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>{t('contact.phone')} *</FormLabel>
+                          <FormControl>
+                            <Input
+                              type="tel"
+                              placeholder={t('contact.placeholders.phone')}
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="company"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>{t('contact.company')}</FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder={t('contact.placeholders.company')}
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
                   </div>
 
                   {/* Property Requirements */}
                   <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="propertyType">{t('contact.property_type')}</Label>
-                      <Select value={formData.propertyType} onValueChange={(value) => handleInputChange('propertyType', value)}>
-                        <SelectTrigger>
-                          <SelectValue placeholder={t('contact.property_type')} />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="office">{t('contact.property_types.office')}</SelectItem>
-                          <SelectItem value="commercial">{t('contact.property_types.commercial')}</SelectItem>
-                          <SelectItem value="building">{t('contact.property_types.building')}</SelectItem>
-                          <SelectItem value="other">{t('contact.other')}</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="dealType">{t('contact.deal_type')}</Label>
-                      <Select value={formData.dealType} onValueChange={(value) => handleInputChange('dealType', value)}>
-                        <SelectTrigger>
-                          <SelectValue placeholder={t('contact.deal_type')} />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="rent">{t('contact.deal_types.rent')}</SelectItem>
-                          <SelectItem value="sale">{t('contact.deal_types.sale')}</SelectItem>
-                          <SelectItem value="both">{t('contact.both')}</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
+                    <FormField
+                      control={form.control}
+                      name="propertyType"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>{t('contact.property_type')} *</FormLabel>
+                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <FormControl>
+                              <SelectTrigger>
+                                <SelectValue placeholder={t('contact.property_type')} />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              <SelectItem value="office">{t('contact.property_types.office')}</SelectItem>
+                              <SelectItem value="commercial">{t('contact.property_types.commercial')}</SelectItem>
+                              <SelectItem value="building">{t('contact.property_types.building')}</SelectItem>
+                              <SelectItem value="other">{t('contact.other')}</SelectItem>
+                            </SelectContent>
+                          </Select>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="dealType"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>{t('contact.deal_type')} *</FormLabel>
+                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <FormControl>
+                              <SelectTrigger>
+                                <SelectValue placeholder={t('contact.deal_type')} />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              <SelectItem value="rent">{t('contact.deal_types.rent')}</SelectItem>
+                              <SelectItem value="sale">{t('contact.deal_types.sale')}</SelectItem>
+                              <SelectItem value="both">{t('contact.both')}</SelectItem>
+                            </SelectContent>
+                          </Select>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
                   </div>
 
                   <div className="grid md:grid-cols-3 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="budget">{t('contact.budget')}</Label>
-                      <Input
-                        id="budget"
-                        value={formData.budget}
-                        onChange={(e) => handleInputChange('budget', e.target.value)}
-                        placeholder={t('contact.placeholders.budget')}
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="area">{t('contact.area')}</Label>
-                      <Input
-                        id="area"
-                        value={formData.area}
-                        onChange={(e) => handleInputChange('area', e.target.value)}
-                        placeholder={t('contact.placeholders.area')}
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="urgency">{t('contact.urgency')}</Label>
-                      <Select value={formData.urgency} onValueChange={(value) => handleInputChange('urgency', value)}>
-                        <SelectTrigger>
-                          <SelectValue placeholder={t('contact.urgency')} />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="low">{t('contact.urgency.low')}</SelectItem>
-                          <SelectItem value="medium">{t('contact.urgency.medium')}</SelectItem>
-                          <SelectItem value="high">{t('contact.urgency.high')}</SelectItem>
-                          <SelectItem value="urgent">{t('contact.urgency.very_urgent')}</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="location">{t('contact.location')}</Label>
-                    <Input
-                      id="location"
-                      value={formData.location}
-                      onChange={(e) => handleInputChange('location', e.target.value)}
-                      placeholder={t('contact.placeholders.location')}
+                    <FormField
+                      control={form.control}
+                      name="budget"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>{t('contact.budget')}</FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder={t('contact.placeholders.budget')}
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="area"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>{t('contact.area')}</FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder={t('contact.placeholders.area')}
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="urgency"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>{t('contact.urgency')}</FormLabel>
+                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <FormControl>
+                              <SelectTrigger>
+                                <SelectValue placeholder={t('contact.urgency')} />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              <SelectItem value="low">{t('contact.urgency.low')}</SelectItem>
+                              <SelectItem value="medium">{t('contact.urgency.medium')}</SelectItem>
+                              <SelectItem value="high">{t('contact.urgency.high')}</SelectItem>
+                              <SelectItem value="urgent">{t('contact.urgency.very_urgent')}</SelectItem>
+                            </SelectContent>
+                          </Select>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="message">{t('contact.message')}</Label>
-                    <Textarea
-                      id="message"
-                      value={formData.message}
-                      onChange={(e) => handleInputChange('message', e.target.value)}
-                      placeholder={t('contact.placeholders.message')}
-                      rows={4}
-                    />
-                  </div>
+                  <FormField
+                    control={form.control}
+                    name="location"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>{t('contact.location')}</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder={t('contact.placeholders.location')}
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
-                  <Button type="submit" className="btn-primary w-full h-12">
-                    <Send className="h-4 w-4 mr-2" />
-                    {t('contact.submit')}
+                  <FormField
+                    control={form.control}
+                    name="message"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>{t('contact.message')} *</FormLabel>
+                        <FormControl>
+                          <Textarea
+                            placeholder={t('contact.placeholders.message')}
+                            rows={4}
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <Button type="submit" className="btn-primary w-full h-12" disabled={isSubmitting}>
+                    {isSubmitting ? (
+                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                    ) : (
+                      <Send className="h-4 w-4 mr-2" />
+                    )}
+                    {isSubmitting ? 'שולח...' : t('contact.submit')}
                   </Button>
-                </form>
+                  </form>
+                </Form>
               </CardContent>
             </Card>
           </div>
@@ -287,7 +396,10 @@ export default function Contact() {
                 </div>
 
                 <div className="pt-4">
-                  <Button className="btn-accent w-full">
+                  <Button 
+                    className="btn-accent w-full"
+                    onClick={() => window.location.href = 'tel:+972-54-123-4567'}
+                  >
                     {t('contact.direct.call_now')}
                   </Button>
                 </div>

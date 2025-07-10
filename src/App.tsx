@@ -12,10 +12,8 @@ import Properties from "./pages/Properties";
 import Services from "./pages/Services";
 import About from "./pages/About";
 import Articles from "./pages/Articles";
-import Calculator from "./pages/Calculator";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
-import { Calculator2 } from "./pages/Calculator_new";
 
 const queryClient = new QueryClient();
 
@@ -33,8 +31,6 @@ const App = () => (
               <Route path="/services" element={<Services />} />
               <Route path="/about" element={<About />} />
               <Route path="/articles" element={<Articles />} />
-              {/* <Route path="/calculator" element={<Calculator />} />
-              <Route path="/calculator2" element={<Calculator2 />} /> */}
               <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
